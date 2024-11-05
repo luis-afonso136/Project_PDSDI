@@ -24,7 +24,7 @@ export const Home: React.FC = () => {
 
       {/* About Section */}
 <section className="py-20 bg-white text-left ml-10 px-4 flex items-center justify-between">
-  <div className="max-w-xl">~
+  <div className="max-w-xl">
     <h3 className="text-3xl font-semibold mb-4">About us</h3>
     <p className="text-gray-700 mb-8">
       Somos uma plataforma dedicada a oferecer cursos práticos
