@@ -21,9 +21,8 @@ export const Home: React.FC = () => {
 <section className="bg-gray-900 text-white text-center py-20">
   <h2 className="text-4xl font-bold mb-4">Learn Fast With Us</h2>
   <img 
-    src={efeitos}// substitua por seu URL da imagem
-    alt="Descrição da imagem" // adicione uma descrição para acessibilidade
-    className="mx-auto mb-8 w-1/2" // estilize a imagem conforme necessário
+    src={efeitos}
+    className="mx-auto  w-1/2" 
   />
   <button className="bg-purple-600 text-white px-20 py-2 rounded-full mt-4">Get Started</button>
 </section>
