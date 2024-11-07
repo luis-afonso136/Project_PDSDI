@@ -5,6 +5,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import image from '../assets/5dbeda04-c471-4ff3-8c01-8e92fe1079ae.png';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
 export const Home: React.FC = () => {
   return (
     <>
@@ -21,15 +22,13 @@ export const Home: React.FC = () => {
     <a href="#" className="hover:text-gray-500">Avaliações</a>
     <a href="#" className="hover:text-gray-500">Register</a>
     <button className="bg-black text-white px-4 py-1 rounded-full hover:bg-gray-800" aria-label="Login">
-  Login
-</button>
-
+    Login
+    </button>
   </nav>
 </header>
 
-
-  {/* Seção principal */}
-  <div className="flex flex-col items-center mt-10 text-center space-y-8 md:space-y-10">
+{/* Seção principal */}
+<div className="flex flex-col items-center mt-10 text-center space-y-8 md:space-y-10">
   <h2 className="text-white text-4xl font-semibold">Learn Fast With Us</h2>
   <button className="bg-purple-700 text-white text-sm font-semibold px-14 py-3 rounded-full hover:bg-indigo-700">
     Get started
