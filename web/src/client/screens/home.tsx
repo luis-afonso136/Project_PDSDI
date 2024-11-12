@@ -29,14 +29,13 @@ export const Home: React.FC = () => {
   </nav>
 </header>
 
-{/* Seção principal */}
-<div className="flex flex-col items-center mt-10 text-center space-y-8 md:space-y-10">
-  <h2 className="text-white text-4xl font-semibold">Learn Fast With Us</h2>
-  <button className="bg-purple-700 text-white text-sm font-semibold px-14 py-3 rounded-full hover:bg-indigo-700">
-    Get started
-  </button>
-</div>
-
+  {/* Seção principal */}
+  <div className="flex flex-col items-center mt-10 text-center space-y-8 md:space-y-10">
+    <h2 className="text-white text-4xl font-semibold">Learn Fast With Us</h2>
+    <button className="bg-purple-700 text-white text-sm font-semibold px-14 py-3 rounded-full hover:bg-indigo-700">
+      Get started
+    </button>
+  </div>
 </div>
 
 {/* About Section */}
