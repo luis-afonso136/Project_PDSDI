@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { FaGoogle, FaFacebookF, FaApple } from 'react-icons/fa';
 import { Eye, EyeClosed } from 'lucide-react';
 import logo from '../assets/LearnAcadamy3.png';
-import codigo from '../assets/codigo.png';
 import computador from '../assets/computador.png';
+import gifBackground from '../assets/bJk.gif';
 
 export const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -15,7 +15,7 @@ export const Login: React.FC = () => {
   return (
     <div
       className="min-h-screen bg-cover bg-center flex items-center justify-center relative"
-      style={{ backgroundImage: `url(${codigo})` }}
+      style={{ backgroundImage: `url(${gifBackground})` }}
     >
       {/* Logotipo no canto superior esquerdo */}
       <div className="absolute top-4 left-4">

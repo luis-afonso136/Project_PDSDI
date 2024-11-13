@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from  'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -12,25 +13,42 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 export const Home: React.FC = () => {
   return (
     <>
-<div className="bg-gray-900 min-h-screen flex flex-col items-center">
+<div className="bg-gray-900 p-9 flex flex-col items-center">
   {/* Navbar */}
-  <header className="bg-white text-black rounded-full py-3 px-8 flex flex-wrap justify-between items-center max-w-5xl w-full mt-6 mx-auto">
-  <h1 className="text-xl font-bold">
-    LEARN <span className="font-normal">ACADEMY</span>
-  </h1>
-  <nav className="flex space-x-6">
-    <a href="#" className="hover:text-gray-500">About Us</a>
-    <a href="#" className="hover:text-gray-500">Curso Populares</a>
-    <a href="#" className="hover:text-gray-500">Avaliações</a>
-    <a href="#" className="hover:text-gray-500">Register</a>
-    <button className="bg-black text-white px-4 py-1 rounded-full hover:bg-gray-800" aria-label="Login">
-    Login
-    </button>
-  </nav>
+<header className="bg-gray-800 text-white py-4 px-8 fixed top-0 left-0 w-full z-50 shadow-lg">
+  <div className="max-w-7xl mx-auto flex justify-between items-center">
+    <h1 className="text-2xl font-bold tracking-wide text-white">
+      LEARN <span className="font-normal text-gray-400">ACADEMY</span>
+    </h1>
+    <nav className="flex space-x-8 items-center">
+      <a href="#about" className="text-lg hover:text-purple-600 relative group">
+        About Us
+        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="#cursos" className="text-lg hover:text-purple-600 relative group">
+        Cursos Populares
+        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="#avaliacoes" className="text-lg hover:text-purple-600 relative group">
+      Avaliações
+        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="#" className="text-lg hover:text-purple-600 relative group">
+        Register
+        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <Link to="/login">
+        <button className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-all duration-300" aria-label="Login">
+          Login
+        </button>
+      </Link>
+    </nav>
+  </div>
 </header>
 
+
   {/* Seção principal */}
-  <div className="flex flex-col items-center mt-10 text-center space-y-8 md:space-y-10">
+  <div className="flex flex-col items-center mt-24 mb-16 text-center space-y-8 md:space-y-10">
     <h2 className="text-white text-4xl font-semibold">Learn Fast With Us</h2>
     <button className="bg-purple-700 text-white text-sm font-semibold px-14 py-3 rounded-full hover:bg-indigo-700">
       Get started
@@ -39,7 +57,7 @@ export const Home: React.FC = () => {
 </div>
 
 {/* About Section */}
-      <section className="py-10 px-4 sm:px-6 md:py-20 bg-white text-left flex flex-col md:flex-row items-center justify-between">
+      <section id='about' className="py-10 px-4 sm:px-6 md:py-20 bg-white text-left flex flex-col md:flex-row items-center justify-between">
   <div className="max-w-xl mb-8 md:mb-0">
     <h3 className="text-3xl font-semibold mb-4">About us</h3>
     <p className="text-gray-700 text-xl mb-5">
@@ -61,41 +79,40 @@ export const Home: React.FC = () => {
 </section>
 
 {/* Cursos Populares - Carrossel */}
-<section className="bg-gray-900 text-white py-20">
-        <div className="text-center">
-          <h3 className="text-xl">Começa a Aprender</h3>
-          <p className="text-5xl font-semibold">Cursos Populares</p>
-        </div>
-        <div className="text-center mt-2 mb-5">
-          <button className="bg-purple-600 text-white px-20 py-2 rounded-full mt-4">Get Started</button>
-        </div>
-        
-        <div className="mt-10">
-        <Swiper
-              spaceBetween={10}
-              slidesPerView={4}
-              navigation
-              pagination={{ clickable: true }}
-              autoplay={{
-                delay: 3000, 
-                disableOnInteraction: false, 
-              }}
-              modules={[Navigation, Pagination, Autoplay]} 
-              breakpoints={{
-                640: { slidesPerView: 1 },
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
-                1280: { slidesPerView: 4 },
-              }}
-              className="swiper-container"
-            >
+<section id='cursos' className="bg-gray-900 text-white py-20">
+  <div className="text-center">
+    <h3 className="text-xl">Começa a Aprender</h3>
+    <p className="text-5xl font-semibold">Cursos Populares</p>
+  </div>
+  <div className="text-center mt-2 mb-5">
+    <button className="bg-purple-600 text-white px-20 py-2 rounded-full mt-4 hover:bg-indigo-700">Get Started</button>
+  </div>
+
+  <div className="mt-10">
+    <Swiper
+      spaceBetween={10}
+      slidesPerView={4}
+      navigation
+      pagination={{ clickable: true }}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+      }}
+      modules={[Navigation, Pagination, Autoplay]}
+      breakpoints={{
+        640: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+        1280: { slidesPerView: 4 },
+      }}
+      className="swiper-container"
+    >
       {/* Slide HTML */}
       <SwiperSlide>
         <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-center w-64 h-80 mx-auto">
           <img src="https://img.icons8.com/color/100/html-5.png" alt="HTML" className="mx-auto mb-4" />
           <h4 className="text-2xl font-bold">HTML</h4>
-          <p className="mt-2 text-sm text-gray-400">Aprenda a estruturar páginas web com HTML.</p>
-          
+          <p className="mt-2 text-base text-gray-400">Aprenda a estruturar páginas web com HTML.</p>
         </div>
       </SwiperSlide>
 
@@ -104,8 +121,7 @@ export const Home: React.FC = () => {
         <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-center w-64 h-80 mx-auto">
           <img src="https://img.icons8.com/color/100/css3.png" alt="CSS" className="mx-auto mb-4" />
           <h4 className="text-2xl font-bold">CSS</h4>
-          <p className="mt-2 text-sm text-gray-400">Dê estilo e design às suas páginas com CSS.</p>
-          
+          <p className="mt-2 text-base text-gray-400">Dê estilo e design às suas páginas com CSS.</p>
         </div>
       </SwiperSlide>
 
@@ -114,7 +130,7 @@ export const Home: React.FC = () => {
         <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-center w-64 h-80 mx-auto">
           <img src="https://img.icons8.com/color/100/javascript.png" alt="JavaScript" className="mx-auto mb-4" />
           <h4 className="text-2xl font-bold">JavaScript</h4>
-          <p className="mt-2 text-sm text-gray-400">Aprenda a linguagem de programação mais popular da web.</p>         
+          <p className="mt-2 text-base text-gray-400">Aprenda a linguagem de programação mais popular da web.</p>
         </div>
       </SwiperSlide>
 
@@ -123,7 +139,7 @@ export const Home: React.FC = () => {
         <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-center w-64 h-80 mx-auto">
           <img src="https://img.icons8.com/color/100/react-native.png" alt="React" className="mx-auto mb-4" />
           <h4 className="text-2xl font-bold">React</h4>
-          <p className="mt-2 text-sm text-gray-400">Domine o framework mais utilizado para construir interfaces de usuário.</p>        
+          <p className="mt-2 text-base text-gray-400">Domine o framework mais utilizado para construir interfaces de usuário.</p>
         </div>
       </SwiperSlide>
 
@@ -132,7 +148,7 @@ export const Home: React.FC = () => {
         <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-center w-64 h-80 mx-auto">
           <img src="https://img.icons8.com/color/100/swift.png" alt="Swift" className="mx-auto mb-4" />
           <h4 className="text-2xl font-bold">Swift</h4>
-          <p className="mt-2 text-sm text-gray-400">Aprenda a criar aplicativos para iOS com Swift.</p> 
+          <p className="mt-2 text-base text-gray-400">Aprenda a criar aplicativos para iOS com Swift.</p>
         </div>
       </SwiperSlide>
 
@@ -141,7 +157,7 @@ export const Home: React.FC = () => {
         <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-center w-64 h-80 mx-auto">
           <img src="https://img.icons8.com/color/100/typescript.png" alt="TypeScript" className="mx-auto mb-4" />
           <h4 className="text-2xl font-bold">TypeScript</h4>
-          <p className="mt-2 text-sm text-gray-400">Expanda seu conhecimento em JavaScript com TypeScript.</p>         
+          <p className="mt-2 text-base text-gray-400">Expanda seu conhecimento em JavaScript com TypeScript.</p>
         </div>
       </SwiperSlide>
 
@@ -150,7 +166,7 @@ export const Home: React.FC = () => {
         <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-center w-64 h-80 mx-auto">
           <img src="https://img.icons8.com/color/100/c-programming.png" alt="C" className="mx-auto mb-4" />
           <h4 className="text-2xl font-bold">C</h4>
-          <p className="mt-2 text-sm text-gray-400">Aprenda os fundamentos da linguagem C.</p>          
+          <p className="mt-2 text-base text-gray-400">Aprenda os fundamentos da linguagem C.</p>
         </div>
       </SwiperSlide>
 
@@ -159,16 +175,17 @@ export const Home: React.FC = () => {
         <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-center w-64 h-80 mx-auto">
           <img src="https://img.icons8.com/color/100/python.png" alt="Python" className="mx-auto mb-4" />
           <h4 className="text-2xl font-bold">Python</h4>
-          <p className="mt-2 text-sm text-gray-400">Desenvolva suas habilidades com Python, a linguagem versátil.</p>
+          <p className="mt-2 text-base text-gray-400">Desenvolva suas habilidades com Python, a linguagem versátil.</p>
         </div>
       </SwiperSlide>
-          </Swiper>
-        </div>
-      </section>
+    </Swiper>
+  </div>
+</section>
 
-      {/* Avaliações */}
-      <section className="py-20">
-      <h3 className="text-3xl font-bold text-center mb-10">Avaliações</h3>
+
+      {/* Reviews */}
+      <section id='avaliacoes' className="py-20">
+      <h1 className="text-4xl font-bold text-center mb-10">Avaliações</h1>
       <div className="flex justify-center space-x-8">
         
         {/* Avaliação 1 */}
