@@ -50,7 +50,7 @@ export const Home: React.FC = () => {
   {/* Seção principal */}
   <div className="flex flex-col items-center mt-24 mb-16 text-center space-y-8 md:space-y-10">
     <h2 className="text-white text-4xl font-semibold">Learn Fast With Us</h2>
-    <button className="bg-purple-700 text-white text-sm font-semibold px-14 py-3 rounded-full hover:bg-indigo-700">
+    <button className="bg-purple-700 text-white px-20 py-2 rounded-full hover:bg-indigo-700">
       Get started
     </button>
   </div>
