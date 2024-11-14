@@ -33,10 +33,10 @@ export const Home: React.FC = () => {
       Avaliações
         <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
       </a>
-      <a href="#" className="text-lg hover:text-purple-600 relative group">
+      <Link to="/register"><a className="text-lg hover:text-purple-600 relative group">
         Register
         <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
-      </a>
+      </a></Link>
       <Link to="/login">
         <button className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-all duration-300" aria-label="Login">
           Login

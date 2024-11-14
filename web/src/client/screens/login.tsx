@@ -36,7 +36,7 @@ export const Login: React.FC = () => {
               <input
                 type="email"
                 id="email"
-                placeholder="example.email@gmail.com"
+                placeholder="Enter your email"
                 className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
               />
             </div>
@@ -45,7 +45,7 @@ export const Login: React.FC = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
-                placeholder="Enter at least 8+ characters"
+                placeholder="Type your password"
                 className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
               />
               <button
