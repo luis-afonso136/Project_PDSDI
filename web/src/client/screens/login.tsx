@@ -78,17 +78,16 @@ export const Login: React.FC = () => {
           </div>
 
           <div className="flex justify-center space-x-4 mt-4">
-            <button className="bg-red-600 hover:bg-red-700 text-white rounded-full p-2">
+            <button className="border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white rounded-full px-10 p-2">
               <FaGoogle size={20} />
             </button>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-2">
+            <button className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white rounded-full px-10 p-2">
               <FaFacebookF size={20} />
             </button>
-            <button className="bg-gray-600 hover:bg-gray-700 text-white rounded-full p-2">
+            <button className="border-2 border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white rounded-full px-10 p-2">
               <FaApple size={20} />
             </button>
           </div>
-
           <div className="text-center mt-4">
             <span className="text-gray-500">Don't have an account? </span>
             <Link to="/register"><a className="text-purple-600 hover:underline">Sign up</a></Link>
