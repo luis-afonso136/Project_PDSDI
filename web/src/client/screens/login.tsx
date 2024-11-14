@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaGoogle, FaFacebookF, FaApple } from 'react-icons/fa';
 import { Eye, EyeClosed } from 'lucide-react';
 import logo from '../assets/LearnAcadamy3.png';
-import computador from '../assets/computador.png';
+import computador from '../assets/negocio.jpg';
 import gifBackground from '../assets/bJk.gif';
 
 export const Login: React.FC = () => {
@@ -23,7 +23,7 @@ export const Login: React.FC = () => {
       </div>
 
       {/* Container principal */}
-      <div className="bg-white shadow-lg rounded-2xl flex max-w-4xl overflow-hidden">
+      <div className="bg-white shadow-lg rounded-2xl flex max-w-6xl h-[600px] overflow-hidden">
         
         {/* Seção de Login */}
         <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
@@ -96,8 +96,8 @@ export const Login: React.FC = () => {
         </div>
 
         {/* Seção de imagem à direita */}
-        <div className="hidden md:flex w-1/2 items-center justify-center">
-          <img src={computador} alt="Programming Illustration" className="w-full h-96 object-cover" />
+        <div className="hidden md:flex w-1/2 h-full">
+          <img src={computador} alt="Programming Illustration" className="w-full h-full object-cover" />
         </div>
       </div>
     </div>
