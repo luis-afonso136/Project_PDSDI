@@ -50,9 +50,9 @@ export const Home: React.FC = () => {
   {/* Seção principal */}
   <div className="flex flex-col items-center mt-24 mb-16 text-center space-y-8 md:space-y-10">
     <h2 className="text-white text-4xl font-semibold">Learn Fast With Us</h2>
-    <button className="bg-purple-700 text-white px-20 py-2 rounded-full hover:bg-indigo-700">
+    <Link to="/login"><button className="bg-purple-700 text-white px-20 py-2 rounded-full hover:bg-indigo-700">
       Get started
-    </button>
+    </button></Link>
   </div>
 </div>
 
@@ -62,14 +62,13 @@ export const Home: React.FC = () => {
     <h3 className="text-3xl font-semibold mb-4">About us</h3>
     <p className="text-gray-700 text-xl mb-5">
       Somos uma plataforma dedicada a oferecer cursos práticos
-      e inovadores de fácil acesso nas áreas de programação, inteligência 
-      artificial e muito mais. Nós queremos capacitar estudantes e profissionais 
+      e inovadores de fácil acesso na área de programação. Nós queremos capacitar estudantes e profissionais 
       com as habilidades mais atuais e demandadas no mercado, através de uma 
       experiência de aprendizado acessível e envolvente.
     </p>
-    <button type="button" className="text-purple-800 hover:text-white border border-purple-900 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-6 py-2.5 text-center me-2 mb-2 dark:border-purple-500 dark:text-purple-500 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-800">
+    <Link to="/login"><button type="button" className="text-purple-800 hover:text-white border border-purple-900 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-6 py-2.5 text-center me-2 mb-2 dark:border-purple-500 dark:text-purple-500 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-800">
       Learn More
-    </button>
+    </button></Link>
   </div>
   <img
     src={image}
@@ -85,7 +84,7 @@ export const Home: React.FC = () => {
     <p className="text-5xl font-semibold">Cursos Populares</p>
   </div>
   <div className="text-center mt-2 mb-5">
-    <button className="bg-purple-600 text-white px-20 py-2 rounded-full mt-4 hover:bg-indigo-700">Get Started</button>
+  <Link to="/login"><button className="bg-purple-600 text-white px-20 py-2 rounded-full mt-4 hover:bg-indigo-700">Get Started</button></Link>
   </div>
 
   <div className="mt-10">

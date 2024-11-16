@@ -66,9 +66,9 @@ export const Login: React.FC = () => {
               </label>
               <a href="#" className="text-sm text-purple-600 hover:underline">Forgot password?</a>
             </div>
-            <button type="submit" className="w-full bg-purple-700 text-white py-2 rounded-lg hover:bg-purple-800">
+            <Link to="/cursosPage"><button type="submit" className="w-full bg-purple-700 text-white py-2 rounded-lg hover:bg-purple-800">
               Sign in
-            </button>
+            </button></Link>
           </form>
 
           <div className="flex items-center mt-6">

@@ -3,6 +3,8 @@ import Footer from '../client/components/footer';
 import Home from '../client/screens/home';
 import Login from '../client/screens/login';
 import Register from '../client/screens/register';
+import CursosPage from '../client/screens/cursosPage';
+import SettingsPage from '../client/screens/settingsPage';
 
 export const App = () => {
   return (
@@ -12,6 +14,8 @@ export const App = () => {
           <Route path="/" element={<Home />} />  
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/cursosPage" element={<CursosPage />} />
+          <Route path="/settingsPage" element={<SettingsPage />} />
           {/* Outras rotas podem ser adicionadas aqui */}
         </Routes>
         <Footer />
