@@ -5,6 +5,7 @@ import Register from "../client/screens/register";
 import Footer from "../client/components/footer";
 import CursosPage from "../client/screens/cursosPage";
 import SettingsPage from "../client/screens/settingsPage";
+import AdminPanel from "../client/screens/adminPanel";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,15 @@ export const router = createBrowserRouter([
     element: (
       <div>
         <SettingsPage/> 
+        <Footer />
+      </div>
+    ), 
+  },
+  {
+    path: "/adminPanel",
+    element: (
+      <div>
+        <AdminPanel/> 
         <Footer />
       </div>
     ), 

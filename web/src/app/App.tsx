@@ -5,6 +5,7 @@ import Login from '../client/screens/login';
 import Register from '../client/screens/register';
 import CursosPage from '../client/screens/cursosPage';
 import SettingsPage from '../client/screens/settingsPage';
+import AdminPanel from '../client/screens/adminPanel';
 
 export const App = () => {
   return (
@@ -16,6 +17,7 @@ export const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/cursosPage" element={<CursosPage />} />
           <Route path="/settingsPage" element={<SettingsPage />} />
+          <Route path="/adminPanel" element={<AdminPanel/>} />
           {/* Outras rotas podem ser adicionadas aqui */}
         </Routes>
         <Footer />

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Sidebar from '../components/sidebar';
+import Navbar from '../components/navbar';
 import { FaSearch, FaTrash, FaEdit } from 'react-icons/fa';
 
 const CursosPage: React.FC = () => {
-  const [filter, setFilter] = useState('all'); 
-  
+  const [filter, setFilter] = useState('all');
+
   const courses = [
     {
       title: 'HTML',
@@ -113,35 +113,13 @@ const CursosPage: React.FC = () => {
   };
 
   return (
-    <div className="flex bg-gray-100">
-      {/* Sidebar */}
-      <Sidebar onLogout={handleLogout} />
+    <div className="bg-gray-100 min-h-screen">
+      <Navbar onLogout={handleLogout} />
 
-      {/* Main Content */}
-      <div className="flex-1 ml-64">
-        {/* Navbar */}
-        <header className="bg-white shadow-md flex items-center justify-between px-6 py-4">
-          <h1 className="text-3xl font-bold text-gray-900">Cursos</h1>
-          <div className="flex items-center space-x-4">
-            <button className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700">
-              Criar Curso
-            </button>
-            {/* Avatar */}
-            <div className="relative">
-              <img
-                src="https://randomuser.me/api/portraits/men/32.jpg"
-                alt="Avatar"
-                className="w-10 h-10 rounded-full border-2 border-gray-300"
-              />
-              <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
-            </div>
-          </div>
-        </header>
-
-        <div className="p-10">
-          {/* Search and Filters */}
-          <div className="flex items-center space-x-4 mb-8">
-            <div className="flex items-center bg-white p-2 rounded shadow w-1/2">
+      <div className="pt-20 px-6 mt-6 mb-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 space-y-4 md:space-y-0">
+            <div className="flex items-center bg-white p-2 rounded shadow w-full md:w-1/2">
               <input
                 type="text"
                 placeholder="Search..."
@@ -149,8 +127,9 @@ const CursosPage: React.FC = () => {
               />
               <FaSearch className="text-gray-500" />
             </div>
+
             <select
-              className="bg-white p-2 rounded shadow"
+              className="bg-white p-2 rounded shadow w-full md:w-auto"
               onChange={(e) => setFilter(e.target.value)}
               value={filter}
             >
@@ -160,31 +139,38 @@ const CursosPage: React.FC = () => {
               <option value="jogos">Jogos</option>
             </select>
           </div>
-
-          {/* Courses Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {filteredCourses.map((course, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg p-4">
-                <img src={course.image} alt={course.title} className="mx-auto mb-4 w-24 h-24" />
-                <h3 className="text-xl font-bold">{course.title}</h3>
-                <p className="text-gray-600 mb-4">{course.description}</p>
-                <div className="flex justify-between items-center">
-                  <button className="bg-purple-600 text-white px-4 py-2 rounded-full">
-                    Começa Agora
-                  </button>
-                  <div className="flex space-x-2">
-                    <button className="text-gray-500 hover:text-gray-900">
-                      <FaEdit />
-                    </button>
-                    <button className="text-gray-500 hover:text-red-600">
-                      <FaTrash />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
+
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+  {filteredCourses.map((course, index) => (
+    <div key={index} className="bg-white rounded-lg shadow-lg p-4 flex flex-col items-center">
+      <img
+        src={course.image}
+        alt={course.title}
+        className="mb-4 w-24 h-24 object-contain"
+      />
+      <h3 className="text-xl font-bold text-center">{course.title}</h3>
+      <p className="text-gray-600 mb-4 text-center">{course.description}</p>
+
+      <div className="mt-auto w-full flex justify-between items-center">
+        <button className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 hover:scale-105 transition duration-300">
+          Começa Agora
+        </button>
+
+        <div className="flex space-x-2">
+          <button className="text-gray-500 hover:text-gray-900 transition duration-200">
+            <FaEdit />
+          </button>
+          <button className="text-gray-500 hover:text-red-600 transition duration-200">
+            <FaTrash />
+          </button>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+
       </div>
     </div>
   );
