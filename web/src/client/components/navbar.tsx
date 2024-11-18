@@ -1,14 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  FaTachometerAlt,
-  FaUsers,
-  FaBook,
-  FaCog,
-  FaSignOutAlt,
-  FaUser,
-  FaDesktop,
-} from "react-icons/fa";
+import { FaTachometerAlt, FaBook, FaCog, FaSignOutAlt, FaUser, FaDesktop } from "react-icons/fa";
 
 interface NavbarProps {
   onLogout: () => void;
@@ -23,18 +15,10 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
         </h2>
 
         <nav className="flex items-center space-x-6">
-          {/* Links de navegação */}
           <Link to="/dashboard" className="relative group">
             <div className="flex items-center hover:text-purple-400">
               <FaTachometerAlt className="mr-2" />
               Dashboard
-            </div>
-            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Link to="/utilizadores" className="relative group">
-            <div className="flex items-center hover:text-purple-400">
-              <FaUsers className="mr-2" />
-              Utilizadores
             </div>
             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
           </Link>
@@ -46,9 +30,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
           </Link>
 
-          {/* Dropdown */}
           <div className="relative group">
-            {/* Avatar */}
             <div className="flex items-center">
               <img
                 src="https://img.icons8.com/color/48/user.png"
@@ -57,7 +39,6 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
               />
             </div>
 
-            {/* Dropdown Menu (aparece no hover) */}
             <div className="absolute right-0 mt-2 w-48 bg-white text-gray-900 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform -translate-y-4 transition-all duration-300 ease-in-out">
               <ul>
                 <li>
