@@ -41,9 +41,8 @@ const AdminPanel: React.FC = () => {
           </div>
         </div>
 
-        {/* Tabela de Usuários */}
         <div className="bg-white p-6 mt-8 rounded-lg shadow-lg">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">Lista de Usuários</h2>
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">Lista de Utilizadores</h2>
           <table className="min-w-full table-auto">
             <thead>
               <tr>

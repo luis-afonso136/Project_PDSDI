@@ -49,8 +49,7 @@ export const ProfilePage: React.FC = () => {
         />
         <div className="mt-4 md:mt-0 md:ml-6">
           <h1 className="text-2xl font-bold">Luís Afonso</h1>
-          <p className="text-gray-500 mt-1">Portugal - Nível 2</p>
-          <p className="text-yellow-500 mt-2">⭐ 50 XP</p>
+          <p className="text-gray-500 mt-1">Portugal</p>
           <div className="flex items-center mt-2">
             <span className="w-3 h-3 rounded-full bg-green-500 mr-2"></span>
             <p className="text-green-600 font-semibold">Online</p>
@@ -64,31 +63,7 @@ export const ProfilePage: React.FC = () => {
           <FaCog className="text-white text-lg" />
         </Link>
       </div>
-
-      <div className="w-full max-w-5xl mt-6 bg-gray-50 shadow-md rounded-lg p-6">
-        <h2 className="text-lg font-bold mb-4">Sequência</h2>
-        <div className="flex items-center space-x-4">
-          <div className="flex space-x-2">
-            {["S", "T", "Q", "S", "D"].map((day, index) => (
-              <div
-                key={index}
-                className="w-10 h-10 flex items-center justify-center bg-green-100 text-green-600 font-bold rounded-full"
-              >
-                {day}
-              </div>
-            ))}
-          </div>
-          <div>
-            <p className="text-sm text-gray-500">
-              Série atual: <span className="text-black">0 dias</span>
-            </p>
-            <p className="text-sm text-gray-500">
-              Série mais longa: <span className="text-black">1 dia</span>
-            </p>
-          </div>
-        </div>
-      </div>
-
+      
       <div className="w-full max-w-5xl mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-gray-50 shadow-md rounded-lg p-6">
           <h2 className="text-lg font-bold mb-4">Progresso dos Cursos</h2>

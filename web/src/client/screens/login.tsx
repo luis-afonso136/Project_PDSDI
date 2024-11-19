@@ -1,17 +1,33 @@
 import React, { useState } from 'react';
-import { FaGoogle, FaFacebookF, FaApple } from 'react-icons/fa';
+import { FaGoogle, FaFacebookF, FaApple, FaUserGraduate, FaChalkboardTeacher } from 'react-icons/fa';
 import { Eye, EyeClosed } from 'lucide-react';
 import { Mail, Lock } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/LearnAcadamy3.png';
 import computador from '../assets/negocio.jpg';
 import gifBackground from '../assets/bJk.gif';
 
 export const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate(); 
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleSignIn = (e: React.FormEvent) => {
+    e.preventDefault();
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const handleOptionClick = (option: string) => {
+    console.log(`Opção selecionada: ${option}`);
+    navigate('/cursosPage');
   };
 
   return (
@@ -27,7 +43,7 @@ export const Login: React.FC = () => {
       <div className="bg-white shadow-lg rounded-2xl flex max-w-6xl h-[600px] overflow-hidden">
         <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
           <h2 className="text-2xl font-semibold mb-6 text-center">Login</h2>
-          <form>
+          <form onSubmit={handleSignIn}>
             <div className="mb-4 relative">
               <label htmlFor="email" className="text-sm font-medium">Email</label>
               <div className="relative">
@@ -66,9 +82,9 @@ export const Login: React.FC = () => {
               </label>
               <a href="#" className="text-sm text-purple-600 hover:underline">Forgot password?</a>
             </div>
-            <Link to="/cursosPage"><button type="submit" className="w-full bg-purple-700 text-white py-2 rounded-lg hover:bg-purple-800">
+            <button type="submit" className="w-full bg-purple-700 text-white py-2 rounded-lg hover:bg-purple-800">
               Sign in
-            </button></Link>
+            </button>
           </form>
 
           <div className="flex items-center mt-6">
@@ -90,7 +106,7 @@ export const Login: React.FC = () => {
           </div>
           <div className="text-center mt-4">
             <span className="text-gray-500">Don't have an account? </span>
-            <Link to="/register"><a className="text-purple-600 hover:underline">Sign up</a></Link>
+            <Link to="/register"><span className="text-purple-600 hover:underline">Sign up</span></Link>
           </div>
         </div>
 
@@ -98,6 +114,37 @@ export const Login: React.FC = () => {
           <img src={computador} alt="Programming Illustration" className="w-full h-full object-cover" />
         </div>
       </div>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-lg w-96 p-6">
+            <h3 className="text-xl font-semibold text-center mb-6">Escolha uma Opção</h3>
+            <div className="flex flex-col space-y-4">
+              <button
+                className="flex items-center justify-center space-x-4 border-2 border-purple-600 rounded-lg py-3 hover:bg-purple-100"
+                onClick={() => handleOptionClick('Aluno')}
+              >
+                <FaUserGraduate className="text-purple-600 text-2xl" />
+                <span className="text-lg font-medium">Aluno</span>
+              </button>
+              <button
+                className="flex items-center justify-center space-x-4 border-2 border-purple-600 rounded-lg py-3 hover:bg-purple-100"
+                onClick={() => handleOptionClick('Professor')}
+              >
+                <FaChalkboardTeacher className="text-purple-600 text-2xl" />
+                <span className="text-lg font-medium">Professor</span>
+              </button>
+            </div>
+            <button
+              className="mt-6 w-full bg-gray-300 py-2 rounded-lg hover:bg-gray-400"
+              onClick={closeModal}
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

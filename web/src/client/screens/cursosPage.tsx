@@ -4,6 +4,7 @@ import { FaSearch, FaTrash, FaEdit } from 'react-icons/fa';
 
 const CursosPage: React.FC = () => {
   const [filter, setFilter] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
 
   const courses = [
     {
@@ -31,19 +32,6 @@ const CursosPage: React.FC = () => {
       category: 'front-end',
     },
     {
-      title: 'Vue.js',
-      description: 'Aprimore suas habilidades no framework Vue.js',
-      image: 'https://img.icons8.com/color/100/vue-js.png',
-      category: 'front-end',
-    },
-    {
-      title: 'Angular',
-      description: 'Aprimore suas habilidades no Angular',
-      image: 'https://img.icons8.com/color/100/angularjs.png',
-      category: 'front-end',
-    },
-
-    {
       title: 'JavaScript',
       description: 'Aprimore as suas habilidades no JavaScript',
       image: 'https://img.icons8.com/color/100/javascript.png',
@@ -53,12 +41,6 @@ const CursosPage: React.FC = () => {
       title: 'Swift',
       description: 'Aprimore as suas habilidades no Swift',
       image: 'https://img.icons8.com/color/100/swift.png',
-      category: 'programacao',
-    },
-    {
-      title: 'PHP',
-      description: 'Aprimore as suas habilidades no PHP',
-      image: 'https://img.icons8.com/color/100/php.png',
       category: 'programacao',
     },
     {
@@ -91,7 +73,6 @@ const CursosPage: React.FC = () => {
       image: 'https://img.icons8.com/color/100/c-sharp-logo.png',
       category: 'programacao',
     },
-
     {
       title: 'Unity',
       description: 'Desenvolva jogos com Unity utilizando C#',
@@ -106,7 +87,14 @@ const CursosPage: React.FC = () => {
     },
   ];
 
-  const filteredCourses = filter === 'all' ? courses : courses.filter(course => course.category === filter);
+  const filteredCourses = courses.filter((course) => {
+    const matchesCategory = filter === 'all' || course.category === filter;
+    const matchesSearch =
+      searchTerm === '' ||
+      course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      course.description.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   const handleLogout = () => {
     alert('Logout efetuado!');
@@ -124,6 +112,8 @@ const CursosPage: React.FC = () => {
                 type="text"
                 placeholder="Search..."
                 className="flex-1 border-none outline-none px-2"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
               <FaSearch className="text-gray-500" />
             </div>
@@ -142,35 +132,36 @@ const CursosPage: React.FC = () => {
         </div>
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-  {filteredCourses.map((course, index) => (
-    <div key={index} className="bg-white rounded-lg shadow-lg p-4 flex flex-col items-center">
-      <img
-        src={course.image}
-        alt={course.title}
-        className="mb-4 w-24 h-24 object-contain"
-      />
-      <h3 className="text-xl font-bold text-center">{course.title}</h3>
-      <p className="text-gray-600 mb-4 text-center">{course.description}</p>
+          {filteredCourses.map((course, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow-lg p-4 flex flex-col items-center"
+            >
+              <img
+                src={course.image}
+                alt={course.title}
+                className="mb-4 w-24 h-24 object-contain"
+              />
+              <h3 className="text-xl font-bold text-center">{course.title}</h3>
+              <p className="text-gray-600 mb-4 text-center">{course.description}</p>
 
-      <div className="mt-auto w-full flex justify-between items-center">
-        <button className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 hover:scale-105 transition duration-300">
-          Começa Agora
-        </button>
+              <div className="mt-auto w-full flex justify-between items-center">
+                <button className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 hover:scale-105 transition duration-300">
+                  Começa Agora
+                </button>
 
-        <div className="flex space-x-2">
-          <button className="text-gray-500 hover:text-gray-900 transition duration-200">
-            <FaEdit />
-          </button>
-          <button className="text-gray-500 hover:text-red-600 transition duration-200">
-            <FaTrash />
-          </button>
+                <div className="flex space-x-2">
+                  <button className="text-gray-500 hover:text-gray-900 transition duration-200">
+                    <FaEdit />
+                  </button>
+                  <button className="text-gray-500 hover:text-red-600 transition duration-200">
+                    <FaTrash />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-    </div>
-  ))}
-</div>
-
-
       </div>
     </div>
   );

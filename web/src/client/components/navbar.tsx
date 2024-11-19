@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaTachometerAlt, FaBook, FaCog, FaSignOutAlt, FaUser, FaDesktop } from "react-icons/fa";
+import { FaBook, FaCog, FaSignOutAlt, FaUser, FaDesktop } from "react-icons/fa";
 
 interface NavbarProps {
   onLogout: () => void;
@@ -15,13 +15,6 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
         </h2>
 
         <nav className="flex items-center space-x-6">
-          <Link to="/dashboard" className="relative group">
-            <div className="flex items-center hover:text-purple-400">
-              <FaTachometerAlt className="mr-2" />
-              Dashboard
-            </div>
-            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
-          </Link>
           <Link to="/cursosPage" className="relative group">
             <div className="flex items-center hover:text-purple-400">
               <FaBook className="mr-2" />
