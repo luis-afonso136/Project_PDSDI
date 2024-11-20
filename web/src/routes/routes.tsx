@@ -62,5 +62,4 @@ export const router = createBrowserRouter([
       </div>
     ), 
   },
-  // Outras rotas podem ser adicionadas aqui
 ]);
