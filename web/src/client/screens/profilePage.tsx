@@ -53,8 +53,7 @@ export const ProfilePage: React.FC = () => {
         <Link
           to="/settingsPage"
           className="absolute top-4 right-4 bg-purple-600 hover:bg-purple-700 text-white p-3 rounded-full focus:outline-none shadow-md transition-all duration-200"
-          aria-label="Configurações"
-        >
+          aria-label="Configurações">
           <FaCog className="text-white text-lg" />
         </Link>
       </div>
