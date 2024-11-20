@@ -1,0 +1,107 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Utilizador {
+  id_utilizador   Int    @id @default(autoincrement())
+  nome            String
+  email           String @unique
+  password        String
+  country         String
+  avatar          String
+  tipo_utilizador String
+  data_registro   String
+
+  createAt         DateTime           @default(now())
+  updateAt         DateTime           @updatedAt
+  Utilizador_Curso Utilizador_Curso[]
+}
+
+model Curso {
+  id_curso    Int         @id @default(autoincrement())
+  nome        String
+  categoria   String
+  dificuldade String
+  imagem      String
+  descricao   String
+  Matricula   Matricula[]
+
+  createAt         DateTime           @default(now())
+  updateAt         DateTime           @updatedAt
+  Perguntas        Perguntas[]
+  Utilizador_Curso Utilizador_Curso[]
+}
+
+model Matricula {
+  id_matricula   Int    @id @default(autoincrement())
+  data_matricula String
+  id_curso       Int    @default(autoincrement())
+  curso          Curso  @relation(fields: [id_curso], references: [id_curso])
+
+  createAt  DateTime    @default(now())
+  updateAt  DateTime    @updatedAt
+  Avaliacao Avaliacao[]
+}
+
+model Avaliacao {
+  id_avaliacao   Int       @id @default(autoincrement())
+  nota           Int
+  comentario     String
+  data_avaliacao String
+  id_matricula   Int       @default(autoincrement())
+  matricula      Matricula @relation(fields: [id_matricula], references: [id_matricula])
+
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
+model Perguntas {
+  id_pergunta Int    @id @default(autoincrement())
+  texto       String
+  dificuldade String
+
+  id_curso Int   @default(autoincrement())
+  curso    Curso @relation(fields: [id_curso], references: [id_curso])
+
+  createAt  DateTime    @default(now())
+  updateAt  DateTime    @updatedAt
+  Respostas Respostas[]
+}
+
+model Respostas {
+  id_resposta Int    @id @default(autoincrement())
+  texto       String
+  pontuacao   Int
+  correta     String
+  errada      String
+
+  id_pergunta Int       @default(autoincrement())
+  pergunta    Perguntas @relation(fields: [id_pergunta], references: [id_pergunta])
+
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
+model Utilizador_Curso {
+  id_utilizador_curso Int    @id @default(autoincrement())
+  progresso           String
+
+  id_utilizador Int        @default(autoincrement())
+  utilizador    Utilizador @relation(fields: [id_utilizador], references: [id_utilizador])
+  id_curso      Int        @default(autoincrement())
+  curso         Curso      @relation(fields: [id_curso], references: [id_curso])
+
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
