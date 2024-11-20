@@ -3,12 +3,7 @@ import { Link } from "react-router-dom";
 import { Doughnut } from "react-chartjs-2";
 import Navbar from "../components/navbar";
 import { FaCog } from "react-icons/fa";
-import {
-  Chart as ChartJS,
-  ArcElement,
-  Tooltip,
-  Legend,
-} from "chart.js";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -88,8 +83,7 @@ export const ProfilePage: React.FC = () => {
           </div>
           <div className="mt-6 flex justify-center">
             <Link to="/cursosPage"
-              className="px-40 py-2 border-2 border-purple-600 text-purple-600 font-semibold rounded-lg hover:bg-purple-600 hover:text-white transition-all duration-200"
-            >
+              className="px-40 py-2 border-2 border-purple-600 text-purple-600 font-semibold rounded-lg hover:bg-purple-600 hover:text-white transition-all duration-200">
               Pesquisar Cursos
             </Link>
           </div>
