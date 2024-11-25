@@ -14,7 +14,7 @@ export const Home: React.FC = () => {
   return (
     <>
 <div className="bg-gray-900 p-9 flex flex-col items-center">
-  {/* Navbar */}
+
 <header className="bg-gray-800 text-white py-4 px-8 fixed top-0 left-0 w-full z-50 shadow-lg">
   <div className="max-w-7xl mx-auto flex justify-between items-center">
     <h1 className="text-2xl font-bold tracking-wide text-white">
