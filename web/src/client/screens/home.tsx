@@ -57,24 +57,24 @@ export const Home: React.FC = () => {
 </div>
 
 {/* About Section */}
-      <section id='about' className="py-10 px-4 sm:px-6 md:py-20 bg-white text-left flex flex-col md:flex-row items-center justify-between">
-  <div className="max-w-xl mb-8 ml-10 md:mb-0">
-    <h3 className="text-3xl font-semibold mb-4">About us</h3>
-    <p className="text-gray-700 text-xl mb-5">
-      Somos uma plataforma dedicada a oferecer cursos práticos
-      e inovadores de fácil acesso na área de programação. Nós queremos capacitar estudantes e profissionais 
-      com as habilidades mais atuais e demandadas no mercado, através de uma 
-      experiência de aprendizado acessível e envolvente.
-    </p>
-    <Link to="/login"><button type="button" className="text-purple-800 hover:text-white border border-purple-900 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-6 py-2.5 text-center me-2 mb-2 dark:border-purple-500 dark:text-purple-500 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-800">
-      Learn More
-    </button></Link>
-  </div>
-  <img
-    src={image}
-    className="w-1/2 max-w-xs ml-10 mr-10"
-    alt="Programming"
-  />
+<section id='about' className="py-10 px-4 sm:px-6 md:py-20 bg-white text-left flex flex-col md:flex-row items-center justify-between">
+    <div className="max-w-xl mb-8 ml-10 md:mb-0">
+      <h3 className="text-3xl font-semibold mb-4">About us</h3>
+      <p className="text-gray-700 text-xl mb-5">
+        Somos uma plataforma dedicada a oferecer cursos práticos
+        e inovadores de fácil acesso na área de programação. Nós queremos capacitar estudantes e profissionais 
+        com as habilidades mais atuais e demandadas no mercado, através de uma 
+        experiência de aprendizado acessível e envolvente.
+      </p>
+      <Link to="/login"><button type="button" className="text-purple-800 hover:text-white border border-purple-900 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-sm px-6 py-2.5 text-center me-2 mb-2 dark:border-purple-500 dark:text-purple-500 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-800">
+        Learn More
+      </button></Link>
+    </div>
+    <img
+      src={image}
+      className="w-1/2 max-w-xs ml-10 mr-10"
+      alt="Programming"
+    />
 </section>
 
 {/* Cursos Populares - Carrossel */}
