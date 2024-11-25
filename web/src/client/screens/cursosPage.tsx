@@ -1,103 +1,104 @@
-import React, { useState } from 'react';
-import Navbar from '../components/navbar';
-import { FaSearch, FaTrash, FaEdit } from 'react-icons/fa';
+import React, { useState } from "react";
+import Navbar from "../components/navbar";
+import { FaSearch, FaTrash, FaEdit } from "react-icons/fa";
 
 const CursosPage: React.FC = () => {
-  const [filter, setFilter] = useState('all');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [filter, setFilter] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const courses = [
     {
-      title: 'HTML',
-      description: 'Aprenda a construir páginas web com HTML',
-      image: 'https://img.icons8.com/color/100/html-5.png',
-      category: 'front-end',
+      title: "HTML",
+      description: "Aprenda a construir páginas web com HTML",
+      image: "https://img.icons8.com/color/100/html-5.png",
+      category: "front-end",
     },
     {
-      title: 'CSS',
-      description: 'Aprimore as suas habilidades em estilização de páginas web com CSS',
-      image: 'https://img.icons8.com/color/100/css3.png',
-      category: 'front-end',
+      title: "CSS",
+      description:
+        "Aprimore as suas habilidades em estilização de páginas web com CSS",
+      image: "https://img.icons8.com/color/100/css3.png",
+      category: "front-end",
     },
     {
-      title: 'TailwindCSS',
-      description: 'Aprimore as suas habilidades no TailwindCSS',
-      image: 'https://img.icons8.com/color/100/tailwindcss.png',
-      category: 'front-end',
+      title: "TailwindCSS",
+      description: "Aprimore as suas habilidades no TailwindCSS",
+      image: "https://img.icons8.com/color/100/tailwindcss.png",
+      category: "front-end",
     },
     {
-      title: 'React',
-      description: 'Aprimore as suas habilidades no React',
-      image: 'https://img.icons8.com/color/100/react-native.png',
-      category: 'front-end',
+      title: "React",
+      description: "Aprimore as suas habilidades no React",
+      image: "https://img.icons8.com/color/100/react-native.png",
+      category: "front-end",
     },
     {
-      title: 'JavaScript',
-      description: 'Aprimore as suas habilidades no JavaScript',
-      image: 'https://img.icons8.com/color/100/javascript.png',
-      category: 'programacao',
+      title: "JavaScript",
+      description: "Aprimore as suas habilidades no JavaScript",
+      image: "https://img.icons8.com/color/100/javascript.png",
+      category: "programacao",
     },
     {
-      title: 'Swift',
-      description: 'Aprimore as suas habilidades no Swift',
-      image: 'https://img.icons8.com/color/100/swift.png',
-      category: 'programacao',
+      title: "Swift",
+      description: "Aprimore as suas habilidades no Swift",
+      image: "https://img.icons8.com/color/100/swift.png",
+      category: "programacao",
     },
     {
-      title: 'TypeScript',
-      description: 'Aprimore as suas habilidades no TypeScript',
-      image: 'https://img.icons8.com/color/100/typescript.png',
-      category: 'programacao',
+      title: "TypeScript",
+      description: "Aprimore as suas habilidades no TypeScript",
+      image: "https://img.icons8.com/color/100/typescript.png",
+      category: "programacao",
     },
     {
-      title: 'Python',
-      description: 'Aprimore as suas habilidades no Python',
-      image: 'https://img.icons8.com/color/100/python.png',
-      category: 'programacao',
+      title: "Python",
+      description: "Aprimore as suas habilidades no Python",
+      image: "https://img.icons8.com/color/100/python.png",
+      category: "programacao",
     },
     {
-      title: 'C',
-      description: 'Aprenda a programar com a linguagem C',
-      image: 'https://img.icons8.com/color/100/c-programming.png',
-      category: 'programacao',
+      title: "C",
+      description: "Aprenda a programar com a linguagem C",
+      image: "https://img.icons8.com/color/100/c-programming.png",
+      category: "programacao",
     },
     {
-      title: 'C++',
-      description: 'Aprimore as suas habilidades em programação com C++',
-      image: 'https://img.icons8.com/color/100/c-plus-plus-logo.png',
-      category: 'programacao',
+      title: "C++",
+      description: "Aprimore as suas habilidades em programação com C++",
+      image: "https://img.icons8.com/color/100/c-plus-plus-logo.png",
+      category: "programacao",
     },
     {
-      title: 'C#',
-      description: 'Aprimore as suas habilidades no C#',
-      image: 'https://img.icons8.com/color/100/c-sharp-logo.png',
-      category: 'programacao',
+      title: "C#",
+      description: "Aprimore as suas habilidades no C#",
+      image: "https://img.icons8.com/color/100/c-sharp-logo.png",
+      category: "programacao",
     },
     {
-      title: 'Unity',
-      description: 'Desenvolva jogos com Unity utilizando C#',
-      image: 'https://img.icons8.com/color/100/unity.png',
-      category: 'jogos',
+      title: "Unity",
+      description: "Desenvolva jogos com Unity utilizando C#",
+      image: "https://img.icons8.com/color/100/unity.png",
+      category: "jogos",
     },
     {
-      title: 'Unreal Engine',
-      description: 'Desenvolva jogos com Unreal Engine utilizando C++',
-      image: 'https://img.icons8.com/color/100/unreal-engine.png',
-      category: 'jogos',
+      title: "Unreal Engine",
+      description: "Desenvolva jogos com Unreal Engine utilizando C++",
+      image: "https://img.icons8.com/color/100/unreal-engine.png",
+      category: "jogos",
     },
   ];
 
   const filteredCourses = courses.filter((course) => {
-    const matchesCategory = filter === 'all' || course.category === filter;
+    const matchesCategory = filter === "all" || course.category === filter;
     const matchesSearch =
-      searchTerm === '' ||
+      searchTerm === "" ||
       course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       course.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
   const handleLogout = () => {
-    alert('Logout efetuado!');
+    alert("Logout efetuado!");
   };
 
   return (
@@ -143,7 +144,9 @@ const CursosPage: React.FC = () => {
                 className="mb-4 w-24 h-24 object-contain"
               />
               <h3 className="text-xl font-bold text-center">{course.title}</h3>
-              <p className="text-gray-600 mb-4 text-center">{course.description}</p>
+              <p className="text-gray-600 mb-4 text-center">
+                {course.description}
+              </p>
 
               <div className="mt-auto w-full flex justify-between items-center">
                 <button className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 hover:scale-105 transition duration-300">

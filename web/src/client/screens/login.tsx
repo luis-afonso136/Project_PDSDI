@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
-import { FaGoogle, FaFacebookF, FaApple, FaUserGraduate, FaChalkboardTeacher } from 'react-icons/fa';
-import { Eye, EyeClosed } from 'lucide-react';
-import { Mail, Lock } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
-import logo from '../assets/LearnAcadamy3.png';
-import computador from '../assets/negocio.jpg';
-import gifBackground from '../assets/bJk.gif';
+import React, { useState } from "react";
+import {
+  FaGoogle,
+  FaFacebookF,
+  FaApple,
+  FaUserGraduate,
+  FaChalkboardTeacher,
+} from "react-icons/fa";
+import { Eye, EyeClosed } from "lucide-react";
+import { Mail, Lock } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import logo from "../assets/LearnAcadamy3.png";
+import computador from "../assets/negocio.jpg";
+import gifBackground from "../assets/bJk.gif";
 
 export const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -27,7 +33,7 @@ export const Login: React.FC = () => {
 
   const handleOptionClick = (option: string) => {
     console.log(`Opção selecionada: ${option}`);
-    navigate('/cursosPage');
+    navigate("/cursosPage");
   };
 
   return (
@@ -45,9 +51,14 @@ export const Login: React.FC = () => {
           <h2 className="text-2xl font-semibold mb-6 text-center">Login</h2>
           <form onSubmit={handleSignIn}>
             <div className="mb-4 relative">
-              <label htmlFor="email" className="text-sm font-medium">Email</label>
+              <label htmlFor="email" className="text-sm font-medium">
+                Email
+              </label>
               <div className="relative">
-                <Mail className="absolute left-3 top-7 transform -translate-y-1/2 text-gray-500" size={20} />
+                <Mail
+                  className="absolute left-3 top-7 transform -translate-y-1/2 text-gray-500"
+                  size={20}
+                />
                 <input
                   type="email"
                   id="email"
@@ -57,9 +68,14 @@ export const Login: React.FC = () => {
               </div>
             </div>
             <div className="mb-4 relative">
-              <label htmlFor="password" className="text-sm font-medium">Password</label>
+              <label htmlFor="password" className="text-sm font-medium">
+                Password
+              </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-7 transform -translate-y-1/2 text-gray-500" size={20} />
+                <Lock
+                  className="absolute left-3 top-7 transform -translate-y-1/2 text-gray-500"
+                  size={20}
+                />
                 <input
                   type={showPassword ? "text" : "password"}
                   id="password"
@@ -77,12 +93,20 @@ export const Login: React.FC = () => {
             </div>
             <div className="flex items-center justify-between mb-6">
               <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox text-purple-600" />
+                <input
+                  type="checkbox"
+                  className="form-checkbox text-purple-600"
+                />
                 <span className="ml-2 text-sm">Remember me</span>
               </label>
-              <a href="#" className="text-sm text-purple-600 hover:underline">Forgot password?</a>
+              <a href="#" className="text-sm text-purple-600 hover:underline">
+                Forgot password?
+              </a>
             </div>
-            <button type="submit" className="w-full bg-purple-700 text-white py-2 rounded-lg hover:bg-purple-800">
+            <button
+              type="submit"
+              className="w-full bg-purple-700 text-white py-2 rounded-lg hover:bg-purple-800"
+            >
               Sign in
             </button>
           </form>
@@ -106,30 +130,38 @@ export const Login: React.FC = () => {
           </div>
           <div className="text-center mt-4">
             <span className="text-gray-500">Don't have an account? </span>
-            <Link to="/register"><span className="text-purple-600 hover:underline">Sign up</span></Link>
+            <Link to="/register">
+              <span className="text-purple-600 hover:underline">Sign up</span>
+            </Link>
           </div>
         </div>
 
         <div className="hidden md:flex w-1/2 h-full">
-          <img src={computador} alt="Programming Illustration" className="w-full h-full object-cover" />
+          <img
+            src={computador}
+            alt="Programming Illustration"
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
 
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg shadow-lg w-96 p-6">
-            <h3 className="text-xl font-semibold text-center mb-6">Escolha uma Opção</h3>
+            <h3 className="text-xl font-semibold text-center mb-6">
+              Escolha uma Opção
+            </h3>
             <div className="flex flex-col space-y-4">
               <button
                 className="flex items-center justify-center space-x-4 border-2 border-purple-600 rounded-lg py-3 hover:bg-purple-100"
-                onClick={() => handleOptionClick('Aluno')}
+                onClick={() => handleOptionClick("Aluno")}
               >
                 <FaUserGraduate className="text-purple-600 text-2xl" />
                 <span className="text-lg font-medium">Aluno</span>
               </button>
               <button
                 className="flex items-center justify-center space-x-4 border-2 border-purple-600 rounded-lg py-3 hover:bg-purple-100"
-                onClick={() => handleOptionClick('Professor')}
+                onClick={() => handleOptionClick("Professor")}
               >
                 <FaChalkboardTeacher className="text-purple-600 text-2xl" />
                 <span className="text-lg font-medium">Professor</span>

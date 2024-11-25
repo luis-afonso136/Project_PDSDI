@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
-import Navbar from '../components/navbar';
-import { FaUser, FaEnvelope, FaLock, FaGlobe, FaPhone } from 'react-icons/fa';
+import React, { useState } from "react";
+import Navbar from "../components/navbar";
+import { FaUser, FaEnvelope, FaLock, FaGlobe, FaPhone } from "react-icons/fa";
 
 const SettingsPage: React.FC = () => {
-  const [userName, setUserName] = useState('John Doe');
-  const [email, setEmail] = useState('johndoe@example.com');
-  const [password, setPassword] = useState('');
-  const [country, setCountry] = useState('');
-  const [phone, setPhone] = useState('');
+  const [userName, setUserName] = useState("John Doe");
+  const [email, setEmail] = useState("johndoe@example.com");
+  const [password, setPassword] = useState("");
+  const [country, setCountry] = useState("");
+  const [phone, setPhone] = useState("");
 
   const handleLogout = () => {
-    alert('Logout efetuado!');
+    alert("Logout efetuado!");
   };
 
   return (
     <div className="bg-gray-100 min-h-screen">
-
       <Navbar onLogout={handleLogout} />
 
       <div className="pt-20 px-6 flex gap-6 mt-14">

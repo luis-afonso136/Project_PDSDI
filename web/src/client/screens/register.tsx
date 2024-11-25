@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { FaGoogle, FaFacebookF, FaApple } from 'react-icons/fa';
-import { Eye, EyeClosed } from 'lucide-react';
-import { Mail, UserRound, Lock } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import logo from '../assets/LearnAcadamy3.png';
-import computador from '../assets/negocio.jpg';
-import gifBackground from '../assets/bJk.gif';
+import React, { useState } from "react";
+import { FaGoogle, FaFacebookF, FaApple } from "react-icons/fa";
+import { Eye, EyeClosed } from "lucide-react";
+import { Mail, UserRound, Lock } from "lucide-react";
+import { Link } from "react-router-dom";
+import logo from "../assets/LearnAcadamy3.png";
+import computador from "../assets/negocio.jpg";
+import gifBackground from "../assets/bJk.gif";
 
 export const Register: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -26,20 +26,28 @@ export const Register: React.FC = () => {
       </div>
 
       <div className="bg-white shadow-lg rounded-2xl flex max-w-6xl h-[600px] overflow-hidden">
-        
         <div className="hidden md:flex w-1/2 h-full">
-          <img src={computador} alt="Programming Illustration" className="w-full h-full object-cover" />
+          <img
+            src={computador}
+            alt="Programming Illustration"
+            className="w-full h-full object-cover"
+          />
         </div>
 
         <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
           <h2 className="text-2xl font-semibold mb-6 text-center">Register</h2>
-          
+
           <form>
             {/* Nome Completo */}
             <div className="mb-4 relative">
-              <label htmlFor="fullName" className="text-sm font-medium">Full Name</label>
+              <label htmlFor="fullName" className="text-sm font-medium">
+                Full Name
+              </label>
               <div className="relative">
-                <UserRound className="absolute left-3 top-7 transform -translate-y-1/2 text-gray-500" size={20} />
+                <UserRound
+                  className="absolute left-3 top-7 transform -translate-y-1/2 text-gray-500"
+                  size={20}
+                />
                 <input
                   type="text"
                   id="fullName"
@@ -51,9 +59,14 @@ export const Register: React.FC = () => {
 
             {/* Email */}
             <div className="mb-4 relative">
-              <label htmlFor="email" className="text-sm font-medium">Email</label>
+              <label htmlFor="email" className="text-sm font-medium">
+                Email
+              </label>
               <div className="relative">
-                <Mail className="absolute left-3 top-7 transform -translate-y-1/2 text-gray-500" size={20} />
+                <Mail
+                  className="absolute left-3 top-7 transform -translate-y-1/2 text-gray-500"
+                  size={20}
+                />
                 <input
                   type="email"
                   id="email"
@@ -65,9 +78,14 @@ export const Register: React.FC = () => {
 
             {/* Senha */}
             <div className="mb-4 relative">
-              <label htmlFor="password" className="text-sm font-medium">Password</label>
+              <label htmlFor="password" className="text-sm font-medium">
+                Password
+              </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-7 transform -translate-y-1/2 text-gray-500" size={20} />
+                <Lock
+                  className="absolute left-3 top-7 transform -translate-y-1/2 text-gray-500"
+                  size={20}
+                />
                 <input
                   type={showPassword ? "text" : "password"}
                   id="password"
@@ -84,7 +102,10 @@ export const Register: React.FC = () => {
               </div>
             </div>
 
-            <button type="submit" className="w-full bg-purple-700 text-white py-2 rounded-lg hover:bg-purple-800">
+            <button
+              type="submit"
+              className="w-full bg-purple-700 text-white py-2 rounded-lg hover:bg-purple-800"
+            >
               Sign up
             </button>
           </form>
@@ -109,7 +130,9 @@ export const Register: React.FC = () => {
 
           <div className="text-center mt-4">
             <span className="text-gray-500">Already have an account? </span>
-            <Link to="/login"><a className="text-purple-600 hover:underline">Sign in</a></Link>
+            <Link to="/login">
+              <a className="text-purple-600 hover:underline">Sign in</a>
+            </Link>
           </div>
         </div>
       </div>

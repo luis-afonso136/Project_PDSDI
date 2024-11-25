@@ -9,9 +9,24 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const ProfilePage: React.FC = () => {
   const courses = [
-    { id: 1, name: "React", status: "Concluido", icon: "https://img.icons8.com/color/100/react-native.png" },
-    { id: 2, name: "JavaScript", status: "Em Andamento", icon: "https://img.icons8.com/color/100/javascript.png" },
-    { id: 3, name: "TailwindCSS", status: "Em Andamento", icon: "https://img.icons8.com/color/100/tailwindcss.png" },
+    {
+      id: 1,
+      name: "React",
+      status: "Concluido",
+      icon: "https://img.icons8.com/color/100/react-native.png",
+    },
+    {
+      id: 2,
+      name: "JavaScript",
+      status: "Em Andamento",
+      icon: "https://img.icons8.com/color/100/javascript.png",
+    },
+    {
+      id: 3,
+      name: "TailwindCSS",
+      status: "Em Andamento",
+      icon: "https://img.icons8.com/color/100/tailwindcss.png",
+    },
   ];
 
   const completedCourses = 2;
@@ -53,11 +68,12 @@ export const ProfilePage: React.FC = () => {
         <Link
           to="/settingsPage"
           className="absolute top-4 right-4 bg-purple-600 hover:bg-purple-700 text-white p-3 rounded-full focus:outline-none shadow-md transition-all duration-200"
-          aria-label="Configurações">
+          aria-label="Configurações"
+        >
           <FaCog className="text-white text-lg" />
         </Link>
       </div>
-      
+
       <div className="w-full max-w-5xl mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-gray-50 shadow-md rounded-lg p-6">
           <h2 className="text-lg font-bold mb-4">Progresso dos Cursos</h2>
@@ -66,7 +82,9 @@ export const ProfilePage: React.FC = () => {
               <button
                 key={course.id}
                 className="flex items-center bg-white shadow rounded-lg p-4 space-x-4 w-full hover:bg-purple-100 transition-all"
-                onClick={() => alert(`Redirecionando para o curso: ${course.name}`)}
+                onClick={() =>
+                  alert(`Redirecionando para o curso: ${course.name}`)
+                }
               >
                 <img
                   src={course.icon}
@@ -81,8 +99,10 @@ export const ProfilePage: React.FC = () => {
             ))}
           </div>
           <div className="mt-6 flex justify-center">
-            <Link to="/cursosPage"
-              className="px-40 py-2 border-2 border-purple-600 text-purple-600 font-semibold rounded-lg hover:bg-purple-600 hover:text-white transition-all duration-200">
+            <Link
+              to="/cursosPage"
+              className="px-40 py-2 border-2 border-purple-600 text-purple-600 font-semibold rounded-lg hover:bg-purple-600 hover:text-white transition-all duration-200"
+            >
               Pesquisar Cursos
             </Link>
           </div>
@@ -94,7 +114,8 @@ export const ProfilePage: React.FC = () => {
             <Doughnut data={chartData} />
           </div>
           <p className="mt-4 text-gray-500 text-sm">
-            {completedCourses} de {totalCourses} cursos concluídos ({percentage}%)
+            {completedCourses} de {totalCourses} cursos concluídos ({percentage}
+            %)
           </p>
         </div>
       </div>

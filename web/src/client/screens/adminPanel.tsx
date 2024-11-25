@@ -15,17 +15,23 @@ const AdminPanel: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Total de Utilizadores</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">
+              Total de Utilizadores
+            </h2>
             <p className="text-gray-600 text-4xl font-bold">15</p>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Novos Utilizadores</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">
+              Novos Utilizadores
+            </h2>
             <p className="text-gray-600 text-4xl font-bold">5</p>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Utilizadores Online e Offline</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">
+              Utilizadores Online e Offline
+            </h2>
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center">
                 <span className="w-4 h-4 rounded-full bg-green-500 mr-2"></span>
@@ -42,7 +48,9 @@ const AdminPanel: React.FC = () => {
         </div>
 
         <div className="bg-white p-6 mt-8 rounded-lg shadow-lg">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">Lista de Utilizadores</h2>
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">
+            Lista de Utilizadores
+          </h2>
           <table className="min-w-full table-auto">
             <thead>
               <tr>
@@ -64,8 +72,12 @@ const AdminPanel: React.FC = () => {
                 </td>
                 <td className="py-2 px-4">
                   <div className="flex space-x-2 justify-start">
-                    <button className="bg-blue-500 text-white hover:bg-blue-700 py-1 px-3 rounded">Editar</button>
-                    <button className="bg-red-500 text-white hover:bg-red-700 py-1 px-3 rounded">Eliminar</button>
+                    <button className="bg-blue-500 text-white hover:bg-blue-700 py-1 px-3 rounded">
+                      Editar
+                    </button>
+                    <button className="bg-red-500 text-white hover:bg-red-700 py-1 px-3 rounded">
+                      Eliminar
+                    </button>
                   </div>
                 </td>
               </tr>
