@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Doughnut } from "react-chartjs-2";
 import Navbar from "../components/navbar";
 import { FaCog } from "react-icons/fa";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
@@ -28,22 +27,7 @@ export const ProfilePage: React.FC = () => {
       icon: "https://img.icons8.com/color/100/tailwindcss.png",
     },
   ];
-
-  const completedCourses = 2;
-  const totalCourses = 5;
-  const percentage = Math.round((completedCourses / totalCourses) * 100);
-
-  const chartData = {
-    labels: ["Concluídos", "Por Fazer"],
-    datasets: [
-      {
-        data: [completedCourses, totalCourses - completedCourses],
-        backgroundColor: ["#4CAF50", "#E0E0E0"],
-        hoverBackgroundColor: ["#45A049", "#C0C0C0"],
-      },
-    ],
-  };
-
+  
   const handleLogout = () => {
     alert("Logout efetuado!");
   };
@@ -106,17 +90,6 @@ export const ProfilePage: React.FC = () => {
               Pesquisar Cursos
             </Link>
           </div>
-        </div>
-
-        <div className="bg-gray-50 shadow-md rounded-lg p-6 flex flex-col items-center">
-          <h2 className="text-lg font-bold mb-4">Média dos Cursos</h2>
-          <div className="w-64 h-64">
-            <Doughnut data={chartData} />
-          </div>
-          <p className="mt-4 text-gray-500 text-sm">
-            {completedCourses} de {totalCourses} cursos concluídos ({percentage}
-            %)
-          </p>
         </div>
       </div>
     </div>

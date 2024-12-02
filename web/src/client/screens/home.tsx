@@ -8,6 +8,8 @@ import image from "../assets/5dbeda04-c471-4ff3-8c01-8e92fe1079ae.png";
 import avatar1 from "../assets/avatar 1.webp";
 import avatar2 from "../assets/avatar 2.png";
 import avatar3 from "../assets/avatar 3.png";
+import efeitosEsquerda from "../assets/efeitosEsquerda.png";
+import efeitosDireita from "../assets/efeitosDireita.png";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 export const Home: React.FC = () => {
@@ -59,8 +61,12 @@ export const Home: React.FC = () => {
           </div>
         </header>
 
-        {/* Seção principal */}
-        <div className="flex flex-col items-center mt-24 mb-16 text-center space-y-8 md:space-y-10">
+        <div className="flex flex-col items-center mt-24 mb-16 text-center space-y-8 md:space-y-10 relative">
+          <img
+            src={efeitosEsquerda}
+            alt="Ilustração esquerda"
+            className="absolute top-0 right-full w-32 md:w-64 -translate-y-16 md:-translate-y-24"
+          />
           <h2 className="text-white text-4xl font-semibold">
             Learn Fast With Us
           </h2>
@@ -69,10 +75,14 @@ export const Home: React.FC = () => {
               Get started
             </button>
           </Link>
+          <img
+            src={efeitosDireita}
+            alt="Ilustração direita"
+            className="absolute top-0 left-full w-32 md:w-72 -translate-y-16 md:-translate-y-24"
+          />
         </div>
       </div>
 
-      {/* About Section */}
       <section
         id="about"
         className="py-10 px-4 sm:px-6 md:py-20 bg-white text-left flex flex-col md:flex-row items-center justify-between"
@@ -102,9 +112,14 @@ export const Home: React.FC = () => {
         />
       </section>
 
-      {/* Cursos Populares - Carrossel */}
-      <section id="cursos" className="bg-gray-900 text-white py-20">
-        <div className="text-center">
+      <section id="cursos" className="bg-gray-900 text-white py-20 relative">
+        <img
+          src={efeitosEsquerda}
+          alt="Ilustração esquerda"
+          className="absolute mt-16 top-0 left-72 w-32 md:w-64 -translate-y-16 md:-translate-y-24"
+        />
+
+        <div className="text-center relative">
           <h3 className="text-xl">Começa a Aprender</h3>
           <p className="text-5xl font-semibold">Cursos Populares</p>
         </div>
@@ -115,6 +130,12 @@ export const Home: React.FC = () => {
             </button>
           </Link>
         </div>
+
+        <img
+          src={efeitosDireita}
+          alt="Ilustração direita"
+          className="absolute mt-16 top-0 right-64 w-32 md:w-72 -translate-y-16 md:-translate-y-24"
+        />
 
         <div className="mt-10">
           <Swiper
@@ -135,7 +156,7 @@ export const Home: React.FC = () => {
             }}
             className="swiper-container"
           >
-            {/* Slide HTML */}
+
             <SwiperSlide>
               <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-center w-64 h-80 mx-auto">
                 <img
@@ -150,7 +171,6 @@ export const Home: React.FC = () => {
               </div>
             </SwiperSlide>
 
-            {/* Slide CSS */}
             <SwiperSlide>
               <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-center w-64 h-80 mx-auto">
                 <img
@@ -165,7 +185,6 @@ export const Home: React.FC = () => {
               </div>
             </SwiperSlide>
 
-            {/* Slide JavaScript */}
             <SwiperSlide>
               <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-center w-64 h-80 mx-auto">
                 <img
@@ -180,7 +199,6 @@ export const Home: React.FC = () => {
               </div>
             </SwiperSlide>
 
-            {/* Slide React */}
             <SwiperSlide>
               <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-center w-64 h-80 mx-auto">
                 <img
@@ -196,7 +214,6 @@ export const Home: React.FC = () => {
               </div>
             </SwiperSlide>
 
-            {/* Slide Swift */}
             <SwiperSlide>
               <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-center w-64 h-80 mx-auto">
                 <img
@@ -211,7 +228,6 @@ export const Home: React.FC = () => {
               </div>
             </SwiperSlide>
 
-            {/* Slide TypeScript */}
             <SwiperSlide>
               <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-center w-64 h-80 mx-auto">
                 <img
@@ -226,7 +242,6 @@ export const Home: React.FC = () => {
               </div>
             </SwiperSlide>
 
-            {/* Slide C */}
             <SwiperSlide>
               <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-center w-64 h-80 mx-auto">
                 <img
@@ -241,7 +256,6 @@ export const Home: React.FC = () => {
               </div>
             </SwiperSlide>
 
-            {/* Slide Python */}
             <SwiperSlide>
               <div className="bg-gray-800 rounded-lg shadow-lg p-6 text-center w-64 h-80 mx-auto">
                 <img
@@ -259,11 +273,9 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Reviews */}
       <section id="avaliacoes" className="py-20">
         <h1 className="text-4xl font-bold text-center mb-10">Avaliações</h1>
         <div className="flex justify-center space-x-8">
-          {/* Avaliação 1 */}
           <div className="bg-gray-800 text-white p-6 rounded-lg shadow-md w-80">
             <div className="flex flex-col items-center">
               <img
@@ -284,7 +296,6 @@ export const Home: React.FC = () => {
             <p className="text-sm text-gray-400">Product Manager</p>
           </div>
 
-          {/* Avaliação 2 */}
           <div className="bg-gray-800 text-white p-6 rounded-lg shadow-md w-80">
             <div className="flex flex-col items-center">
               <img
@@ -304,7 +315,6 @@ export const Home: React.FC = () => {
             <p className="text-sm text-gray-400">Product Designer</p>
           </div>
 
-          {/* Avaliação 3 */}
           <div className="bg-gray-800 text-white p-6 rounded-lg shadow-md w-80">
             <div className="flex flex-col items-center">
               <img
