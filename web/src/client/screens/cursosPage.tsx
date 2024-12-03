@@ -105,7 +105,7 @@ const CursosPage: React.FC = () => {
     <div className="bg-gray-100 min-h-screen">
       <Navbar onLogout={handleLogout} />
 
-      <div className="pt-20 px-6 mt-6 mb-10">
+      <div className="pt-20 px-6 mt-6">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 space-y-4 md:space-y-0">
             <div className="flex items-center bg-white p-2 rounded shadow w-full md:w-1/2">

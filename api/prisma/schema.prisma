@@ -18,10 +18,9 @@ model Utilizador {
   nome            String
   email           String @unique
   password        String
-  country         String
-  avatar          String
-  tipo_utilizador String
-  data_registro   String
+  country         String?
+  avatar          String?
+  tipo_utilizador String?
 
   createAt         DateTime           @default(now())
   updateAt         DateTime           @updatedAt
@@ -98,7 +97,7 @@ model Utilizador_Curso {
   progresso           String
 
   id_utilizador Int        @default(autoincrement())
-  utilizador    Utilizador @relation(fields: [id_utilizador], references: [id_utilizador])
+  utilizador    Utilizador? @relation(fields: [id_utilizador], references: [id_utilizador])
   id_curso      Int        @default(autoincrement())
   curso         Curso      @relation(fields: [id_curso], references: [id_curso])
 
