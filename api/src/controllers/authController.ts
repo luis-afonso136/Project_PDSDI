@@ -1,41 +1,28 @@
-import fastify from "fastify";
+import { FastifyReply, FastifyRequest } from "fastify";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { PrismaClient } from "@prisma/client";
-import { authRoutes } from "./src/routes/authRoutes";
 
-const app = fastify();
 const prisma = new PrismaClient();
-
 const SECRET_KEY = process.env.SECRET_KEY || "";
 
-app.get("/", async (request, reply) => {
-    return "PDSDI API";
-})
-
-authRoutes(app);
-
-// Registro
-app.post("/register", async (request, reply) => {
+export const registerUser = async (request: FastifyRequest, reply: FastifyReply) => {
   const { nome, email, password } = request.body as {
     nome: string;
     email: string;
     password: string;
   };
 
-  // Validação básica
   if (!nome || !email || !password) {
     return reply.status(400).send({ message: "All fields are required." });
   }
 
   try {
-    // Verifica se o usuário já existe
     const existingUser = await prisma.utilizador.findUnique({ where: { email } });
     if (existingUser) {
       return reply.status(409).send({ message: "User already exists." });
     }
 
-    // Cria o usuário com senha criptografada
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await prisma.utilizador.create({
       data: { nome, email, password: hashedPassword },
@@ -46,16 +33,14 @@ app.post("/register", async (request, reply) => {
     console.error("Error during registration:", error);
     reply.status(500).send({ message: "Internal server error." });
   }
-});
+};
 
-// Login
-app.post("/login", async (request, reply) => {
+export const loginUser = async (request: FastifyRequest, reply: FastifyReply) => {
   const { email, password } = request.body as {
     email: string;
     password: string;
   };
 
-  // Validação básica
   if (!email || !password) {
     return reply.status(400).send({ message: "Email and password are required." });
   }
@@ -67,7 +52,6 @@ app.post("/login", async (request, reply) => {
       return reply.status(401).send({ message: "Invalid credentials." });
     }
 
-    // Gera o token JWT
     const token = jwt.sign({ id: user.id_utilizador }, SECRET_KEY, { expiresIn: "1h" });
 
     reply.send({ token, user: { id: user.id_utilizador, name: user.nome, email: user.email } });
@@ -75,17 +59,4 @@ app.post("/login", async (request, reply) => {
     console.error("Error during login:", error);
     reply.status(500).send({ message: "Internal server error." });
   }
-});
-
-// Inicia o servidor
-const startServer = async () => {
-  try {
-    await app.listen({ port: 3000 });
-    console.log("Server running on http://localhost:3000");
-  } catch (error) {
-    console.error("Error starting server:", error);
-    process.exit(1);
-  }
 };
-
-startServer();
