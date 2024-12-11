@@ -6,7 +6,7 @@ interface NavbarProps {
   onLogout: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
+const Navbar: React.FC<NavbarProps> = () => {
   return (
     <header className="bg-gray-900 text-white fixed top-0 left-0 w-full shadow-md z-50">
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
@@ -64,7 +64,6 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
                 <li>
                   <Link
                     to="/"
-                    onClick={onLogout}
                     className="flex items-center w-full text-left px-4 py-2 hover:bg-gray-200 text-red-500"
                   >
                     <FaSignOutAlt className="mr-2 text-red-500" />

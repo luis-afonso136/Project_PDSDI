@@ -2,7 +2,6 @@ import fastify from "fastify";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { PrismaClient } from "@prisma/client";
-import { authRoutes } from "./src/routes/authRoutes";
 
 const app = fastify();
 const prisma = new PrismaClient();
@@ -12,8 +11,6 @@ const SECRET_KEY = process.env.SECRET_KEY || "";
 app.get("/", async (request, reply) => {
     return "PDSDI API";
 })
-
-authRoutes(app);
 
 // Registro
 app.post("/register", async (request, reply) => {

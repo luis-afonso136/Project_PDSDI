@@ -3,20 +3,16 @@ import {
   FaGoogle,
   FaFacebookF,
   FaApple,
-  FaUserGraduate,
-  FaChalkboardTeacher,
 } from "react-icons/fa";
 import { Eye, EyeClosed } from "lucide-react";
 import { Mail, Lock } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../assets/LearnAcadamy3.png";
 import computador from "../assets/negocio.jpg";
 import gifBackground from "../assets/bJk.gif";
 
 export const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -24,16 +20,6 @@ export const Login: React.FC = () => {
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
-
-  const handleOptionClick = (option: string) => {
-    console.log(`Opção selecionada: ${option}`);
-    navigate("/cursosPage");
   };
 
   return (
@@ -103,12 +89,14 @@ export const Login: React.FC = () => {
                 Forgot password?
               </a>
             </div>
+            <Link to="/cursosPage">
             <button
               type="submit"
               className="w-full bg-purple-700 text-white py-2 rounded-lg hover:bg-purple-800"
             >
               Sign in
             </button>
+            </Link>
           </form>
 
           <div className="flex items-center mt-6">
@@ -144,38 +132,6 @@ export const Login: React.FC = () => {
           />
         </div>
       </div>
-
-      {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-lg w-96 p-6">
-            <h3 className="text-xl font-semibold text-center mb-6">
-              Escolha uma Opção
-            </h3>
-            <div className="flex flex-col space-y-4">
-              <button
-                className="flex items-center justify-center space-x-4 border-2 border-purple-600 rounded-lg py-3 hover:bg-purple-100"
-                onClick={() => handleOptionClick("Aluno")}
-              >
-                <FaUserGraduate className="text-purple-600 text-2xl" />
-                <span className="text-lg font-medium">Aluno</span>
-              </button>
-              <button
-                className="flex items-center justify-center space-x-4 border-2 border-purple-600 rounded-lg py-3 hover:bg-purple-100"
-                onClick={() => handleOptionClick("Professor")}
-              >
-                <FaChalkboardTeacher className="text-purple-600 text-2xl" />
-                <span className="text-lg font-medium">Professor</span>
-              </button>
-            </div>
-            <button
-              className="mt-6 w-full bg-gray-300 py-2 rounded-lg hover:bg-gray-400"
-              onClick={closeModal}
-            >
-              Cancelar
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
