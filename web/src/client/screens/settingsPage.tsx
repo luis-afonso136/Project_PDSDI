@@ -22,12 +22,12 @@ const SettingsPage: React.FC = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen text-gray-800">
-      <Navbar onLogout={() => alert("Logout efetuado!")}/>
+      <Navbar onLogout={() => alert("Logout efetuado!")} />
 
       <div className="pt-24 px-6 md:px-12 max-w-4xl mx-auto">
-        <h1 className="text-2xl font-semibold text-gray-700 mb-6">Configurações da Conta</h1>
+        <h1 className="text-3xl font-bold text-gray-700 mb-8">Configurações de Conta</h1>
 
-        <div className="bg-white shadow-md rounded-lg p-8 space-y-8">
+        <div className="bg-white shadow-md rounded-lg p-8 space-y-6">
           {/* Nome */}
           <div className="relative">
             <label htmlFor="userName" className="text-sm font-medium text-gray-500">
@@ -40,12 +40,12 @@ const SettingsPage: React.FC = () => {
               value={formData.userName}
               onChange={handleChange}
               placeholder="Digite seu nome"
-              className="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-4 pl-12"
+              className="mt-2 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-4 pl-12"
             />
-            <FaUser className="absolute left-4 top-11 text-gray-400" />
+            <FaUser className="absolute left-4 top-10 text-gray-400" />
           </div>
 
-          {/* Email */}
+          {/* E-mail */}
           <div className="relative">
             <label htmlFor="email" className="text-sm font-medium text-gray-500">
               E-mail
@@ -57,9 +57,9 @@ const SettingsPage: React.FC = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Digite seu e-mail"
-              className="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-4 pl-12"
+              className="mt-2 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-4 pl-12"
             />
-            <FaEnvelope className="absolute left-4 top-11 text-gray-400" />
+            <FaEnvelope className="absolute left-4 top-10 text-gray-400" />
           </div>
 
           {/* Senha */}
@@ -74,9 +74,9 @@ const SettingsPage: React.FC = () => {
               value={formData.password}
               onChange={handleChange}
               placeholder="Digite sua senha"
-              className="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-4 pl-12"
+              className="mt-2 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-4 pl-12"
             />
-            <FaLock className="absolute left-4 top-11 text-gray-400" />
+            <FaLock className="absolute left-4 top-10 text-gray-400" />
           </div>
 
           {/* País */}
@@ -91,9 +91,9 @@ const SettingsPage: React.FC = () => {
               value={formData.country}
               onChange={handleChange}
               placeholder="Digite seu país"
-              className="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-4 pl-12"
+              className="mt-2 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-4 pl-12"
             />
-            <FaGlobe className="absolute left-4 top-11 text-gray-400" />
+            <FaGlobe className="absolute left-4 top-10 text-gray-400" />
           </div>
 
           {/* Telefone */}
@@ -108,9 +108,9 @@ const SettingsPage: React.FC = () => {
               value={formData.phone}
               onChange={handleChange}
               placeholder="Digite seu número de telefone"
-              className="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-4 pl-12"
+              className="mt-2 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-4 pl-12"
             />
-            <FaPhone className="absolute left-4 top-11 text-gray-400" />
+            <FaPhone className="absolute left-4 top-10 text-gray-400" />
           </div>
 
           {/* Botão de Salvar */}
