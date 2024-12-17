@@ -2,9 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 import { FaCog } from "react-icons/fa";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-
-ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const ProfilePage: React.FC = () => {
   const courses = [
@@ -33,7 +30,7 @@ export const ProfilePage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center p-6 mt-20 mb-20">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6 mt-16">
       <Navbar onLogout={handleLogout} />
       <div className="w-full max-w-5xl bg-gray-50 shadow-md rounded-lg p-6 flex flex-col md:flex-row items-center md:items-start relative">
         <img

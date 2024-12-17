@@ -110,7 +110,7 @@ const CursosPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen mt-5">
+    <div className="bg-gray-100 min-h-screen mt-5">
       <Navbar onLogout={() => alert("Logout efetuado!")} />
 
       <div className="pt-20 px-6">
@@ -162,7 +162,7 @@ const CursosPage: React.FC = () => {
           <div className="text-xl font-semibold text-gray-800 mb-4">Cursos</div>
         </div>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 ">
           {filteredCourses.map((course, index) => (
             <div
               key={index}

@@ -7,7 +7,7 @@ const AdminPanel: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-100 text-gray-800 mt-20">
+    <div className="flex flex-col h-screen bg-gray-100 text-gray-800">
       <Navbar onLogout={handleLogout} />
 
       <main className="flex-1 p-8 overflow-auto">

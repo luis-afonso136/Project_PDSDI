@@ -35,7 +35,7 @@ export const Register: React.FC = () => {
         </div>
 
         <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
-          <h2 className="text-2xl font-semibold mb-6 text-center">Register</h2>
+          <h2 className="text-2xl font-semibold text-center">Register</h2>
 
           <form>
             {/* Nome Completo */}
@@ -99,6 +99,25 @@ export const Register: React.FC = () => {
                 >
                   {showPassword ? <EyeClosed size={20} /> : <Eye size={20} />}
                 </button>
+              </div>
+            </div>
+
+            {/* Tipo de Utilizador */}
+            <div className="mb-4">
+              <label htmlFor="userType" className="text-sm font-medium">
+                User Type
+              </label>
+              <div className="relative">
+                <select
+                  id="userType"
+                  className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+                >
+                  <option value="" disabled selected>
+                    Select your role
+                  </option>
+                  <option value="teacher">Professor</option>
+                  <option value="student">Aluno</option>
+                </select>
               </div>
             </div>
 

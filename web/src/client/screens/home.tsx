@@ -85,7 +85,7 @@ export const Home: React.FC = () => {
 
       <section
         id="about"
-        className="py-10 px-4 sm:px-6 md:py-20 bg-white text-left flex flex-col md:flex-row items-center justify-between"
+        className="py-10 px-4 sm:px-6 md:py-20 bg-gray text-left flex flex-col md:flex-row items-center justify-between"
       >
         <div className="max-w-xl mb-8 ml-10 md:mb-0">
           <h3 className="text-3xl font-semibold mb-4">About us</h3>
