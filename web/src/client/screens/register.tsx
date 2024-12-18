@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useState, useRef } from "react";
 import { FaGoogle, FaFacebookF, FaApple } from "react-icons/fa";
 import { Eye, EyeClosed } from "lucide-react";
 import { Mail, UserRound, Lock } from "lucide-react";
@@ -11,7 +11,10 @@ import { useAuth } from "../../hooks/useAuth";
 export const Register: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  // criar referencias(variaveis) com o useRef para serem usadas para o insert
+  // Referências para os campos
+  const nomeRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   const { signUp } = useAuth();
 
@@ -20,16 +23,25 @@ export const Register: React.FC = () => {
   };
 
   const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
-
     e.preventDefault();
 
-    // if para verificar caso os campos nao estejam preenchidos caso nao estejam mostra erro
-    // fazer try com o signUp e caso nao de mostrar erro
-    if(
+    const nome = nomeRef.current?.value || "";
+    const email = emailRef.current?.value || "";
+    const password = passwordRef.current?.value || "";
 
-    )
+    // Verifica se os campos estão preenchidos
+    if (!nome || !email || !password) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
 
-  }
+    try {
+      await signUp({ nome, email, password });
+      alert("Cadastro realizado com sucesso!");
+    } catch (error) {
+      alert("Erro ao realizar cadastro. Tente novamente.");
+    }
+  };
 
   return (
     <div
@@ -54,10 +66,10 @@ export const Register: React.FC = () => {
         <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
           <h2 className="text-2xl font-semibold text-center">Register</h2>
 
-          <form>
+          <form onSubmit={handleRegister}>
             <div className="mb-4 relative">
-              <label htmlFor="fullName" className="text-sm font-medium">
-                Full Name
+              <label htmlFor="nome" className="text-sm font-medium">
+                Nome
               </label>
               <div className="relative">
                 <UserRound
@@ -66,13 +78,14 @@ export const Register: React.FC = () => {
                 />
                 <input
                   type="text"
-                  id="fullName"
+                  id="nome"
+                  ref={nomeRef}
                   placeholder="Enter your full name"
                   className="w-full px-4 py-2 mt-2 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+                  required
                 />
               </div>
             </div>
-
 
             <div className="mb-4 relative">
               <label htmlFor="email" className="text-sm font-medium">
@@ -86,12 +99,13 @@ export const Register: React.FC = () => {
                 <input
                   type="email"
                   id="email"
+                  ref={emailRef}
                   placeholder="Enter your email"
                   className="w-full px-4 py-2 mt-2 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+                  required
                 />
               </div>
             </div>
-
 
             <div className="mb-4 relative">
               <label htmlFor="password" className="text-sm font-medium">
@@ -105,8 +119,10 @@ export const Register: React.FC = () => {
                 <input
                   type={showPassword ? "text" : "password"}
                   id="password"
+                  ref={passwordRef}
                   placeholder="Enter your password"
                   className="w-full px-4 py-2 mt-2 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+                  required
                 />
                 <button
                   type="button"
