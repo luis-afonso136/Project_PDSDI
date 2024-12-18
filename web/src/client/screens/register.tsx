@@ -55,7 +55,6 @@ export const Register: React.FC = () => {
           <h2 className="text-2xl font-semibold text-center">Register</h2>
 
           <form>
-            {/* Nome Completo */}
             <div className="mb-4 relative">
               <label htmlFor="fullName" className="text-sm font-medium">
                 Full Name
@@ -74,7 +73,7 @@ export const Register: React.FC = () => {
               </div>
             </div>
 
-            {/* Email */}
+
             <div className="mb-4 relative">
               <label htmlFor="email" className="text-sm font-medium">
                 Email
@@ -93,7 +92,7 @@ export const Register: React.FC = () => {
               </div>
             </div>
 
-            {/* Senha */}
+
             <div className="mb-4 relative">
               <label htmlFor="password" className="text-sm font-medium">
                 Password

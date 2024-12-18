@@ -6,7 +6,12 @@ dotenv.config();
 
 const app = fastify();
 
-// Rotas - Importamos as rotas organizadas
+// Rota raiz (opcional, mas resolve o erro 404 para `/`)
+app.get("/", async (request, reply) => {
+  reply.send({ message: "Bem-vindo à API! Use /register ou /login para começar." });
+});
+
+// Rotas de autenticação
 app.register(authRoutes);
 
 // Inicialização do servidor
