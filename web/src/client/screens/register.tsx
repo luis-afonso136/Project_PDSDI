@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { FaGoogle, FaFacebookF, FaApple } from "react-icons/fa";
 import { Eye, EyeClosed } from "lucide-react";
 import { Mail, UserRound, Lock } from "lucide-react";
@@ -6,13 +6,30 @@ import { Link } from "react-router-dom";
 import logo from "../assets/LearnAcadamy3.png";
 import computador from "../assets/negocio.jpg";
 import gifBackground from "../assets/bJk.gif";
+import { useAuth } from "../../hooks/useAuth";
 
 export const Register: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
 
+  // criar referencias(variaveis) com o useRef para serem usadas para o insert
+
+  const { signUp } = useAuth();
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
+
+    e.preventDefault();
+
+    // if para verificar caso os campos nao estejam preenchidos caso nao estejam mostra erro
+    // fazer try com o signUp e caso nao de mostrar erro
+    if(
+
+    )
+
+  }
 
   return (
     <div
