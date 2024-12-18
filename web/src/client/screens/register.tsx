@@ -102,25 +102,6 @@ export const Register: React.FC = () => {
               </div>
             </div>
 
-            {/* Tipo de Utilizador */}
-            <div className="mb-4">
-              <label htmlFor="userType" className="text-sm font-medium">
-                User Type
-              </label>
-              <div className="relative">
-                <select
-                  id="userType"
-                  className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
-                >
-                  <option value="" disabled selected>
-                    Select your role
-                  </option>
-                  <option value="teacher">Professor</option>
-                  <option value="student">Aluno</option>
-                </select>
-              </div>
-            </div>
-
             <button
               type="submit"
               className="w-full bg-purple-700 text-white py-2 rounded-lg hover:bg-purple-800"

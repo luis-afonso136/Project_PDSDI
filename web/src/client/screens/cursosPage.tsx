@@ -31,43 +31,37 @@ const CursosPage: React.FC = () => {
   const courses = [
     {
       title: "ReactJS",
-      hours: "50h",
       level: "Intermediário",
       skills: ["ReactJS", "JavaScript"],
     },
     {
       title: "Full-Stack",
-      hours: "100h",
       level: "Iniciante",
       skills: ["JavaScript", "NodeJS"],
     },
     {
-      title: "Python Básico",
-      hours: "40h",
+      title: "Python",
       level: "Iniciante",
       skills: ["Python"],
     },
-    { title: "C# Avançado", hours: "60h", level: "Avançado", skills: ["C#"] },
-    { title: "PHP Básico", hours: "30h", level: "Iniciante", skills: ["PHP"] },
+    { title: "C#", level: "Avançado", skills: ["C#"] },
+    { title: "PHP", level: "Iniciante", skills: ["PHP"] },
     {
-      title: "JavaScript Intermediário",
-      hours: "45h",
+      title: "JavaScript",
       level: "Intermediário",
       skills: ["JavaScript"],
     },
     {
       title: "Frontend",
-      hours: "120h",
       level: "Intermediário",
       skills: ["ReactJS", "JavaScript", "HTML", "CSS", "Tailwind"],
     },
     {
       title: "Backend",
-      hours: "120h",
       level: "Avançado",
       skills: ["NodeJS", "PHP", "C#", "Python"],
     },
-    { title: "Swift", hours: "80h", level: "Intermediário", skills: ["Swift"] },
+    { title: "Swift", level: "Intermediário", skills: ["Swift"] },
   ];
 
   const handleTechnologyClick = (tech: string) => {
@@ -177,7 +171,7 @@ const CursosPage: React.FC = () => {
                 </h3>
               </div>
               <p className="text-gray-600 mb-4">
-                {course.hours} - {course.level}
+                {course.level}
               </p>
               <div className="flex flex-wrap gap-2 mt-auto">
                 {course.skills.map((skill, idx) => (
