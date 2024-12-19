@@ -5,6 +5,12 @@ import { FaSearch, FaBook } from "react-icons/fa";
 const CursosPage: React.FC = () => {
   const [filter, setFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false); // Estado para abrir/fechar o modal
+  const [newCourse, setNewCourse] = useState({
+    title: "",
+    level: "",
+    skills: [] as string[],
+  });
 
   const technologies = [
     {
@@ -103,8 +109,26 @@ const CursosPage: React.FC = () => {
     }
   };
 
+  // Função para abrir o modal
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  // Função para fechar o modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  // Função para lidar com o envio do formulário de novo curso
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Aqui você pode adicionar lógica para salvar o curso, enviar para a API, etc.
+    console.log("Novo curso:", newCourse);
+    setIsModalOpen(false); // Fechar o modal após o envio
+  };
+
   return (
-    <div className="bg-gray-100 min-h-screen mt-5">
+    <div className="bg-gray-100 min-h-screen mt-5 pb-5">
       <Navbar onLogout={() => alert("Logout efetuado!")} />
 
       <div className="pt-20 px-6">
@@ -121,10 +145,21 @@ const CursosPage: React.FC = () => {
               <FaSearch className="text-gray-500" />
             </div>
 
+            <div className="flex justify-end mb-4">
+            <button
+              className="bg-purple-700 text-white px-4 py-2 rounded shadow hover:bg-purple-500"
+              onClick={openModal} // Abrir o modal ao clicar
+            >
+              Adicionar Curso
+            </button>
+          </div>
+
             <select
               className="bg-white p-2 rounded shadow w-full md:w-auto text-gray-600"
               onChange={(e) => setFilter(e.target.value)}
               value={filter}
+
+              
             >
               <option value="all">Todos</option>
               {technologies.map((tech) => (
@@ -137,7 +172,7 @@ const CursosPage: React.FC = () => {
           <div className="text-xl font-semibold text-gray-800 mb-4">
             Tecnologias
           </div>
-          <div className="flex space-x-4 mb-8 ">
+          <div className="flex space-x-4 mb-8">
             {technologies.map((tech, index) => (
               <div
                 key={index}
@@ -156,7 +191,7 @@ const CursosPage: React.FC = () => {
           <div className="text-xl font-semibold text-gray-800 mb-4">Cursos</div>
         </div>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 ">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredCourses.map((course, index) => (
             <div
               key={index}
@@ -166,13 +201,9 @@ const CursosPage: React.FC = () => {
                 <FaBook />
               </div>
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-bold text-gray-800">
-                  {course.title}
-                </h3>
+                <h3 className="text-lg font-bold text-gray-800">{course.title}</h3>
               </div>
-              <p className="text-gray-600 mb-4">
-                {course.level}
-              </p>
+              <p className="text-gray-600 mb-4">{course.level}</p>
               <div className="flex flex-wrap gap-2 mt-auto">
                 {course.skills.map((skill, idx) => (
                   <span
@@ -192,6 +223,82 @@ const CursosPage: React.FC = () => {
           ))}
         </div>
       </div>
+
+      
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-1/3">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+              Adicionar Novo Curso
+            </h2>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-600 mb-2">
+                  Título do Curso
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-2 border border-gray-300 rounded"
+                  value={newCourse.title}
+                  onChange={(e) => setNewCourse({ ...newCourse, title: e.target.value })}
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-600 mb-2">
+                  Nível
+                </label>
+                <select
+                  className="w-full p-2 border border-gray-300 rounded"
+                  value={newCourse.level}
+                  onChange={(e) => setNewCourse({ ...newCourse, level: e.target.value })}
+                  required
+                >
+                  <option value="">Selecione o nível</option>
+                  <option value="Iniciante">Iniciante</option>
+                  <option value="Intermediário">Intermediário</option>
+                  <option value="Avançado">Avançado</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-600 mb-2">
+                  Tecnologias
+                </label>
+                <select
+                  multiple
+                  className="w-full p-2 border border-gray-300 rounded"
+                  value={newCourse.skills}
+                  onChange={(e) =>
+                    setNewCourse({ ...newCourse, skills: Array.from(e.target.selectedOptions, option => option.value) })
+                  }
+                  required
+                >
+                  {technologies.map((tech, index) => (
+                    <option key={index} value={tech.name}>
+                      {tech.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="flex justify-end space-x-4">
+                <button
+                  type="button"
+                  className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+                  onClick={closeModal} // Fechar o modal
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-purple-700 text-white rounded hover:bg-purple-500"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

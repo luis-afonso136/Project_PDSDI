@@ -3,6 +3,7 @@ import { FaGoogle, FaFacebookF, FaApple } from "react-icons/fa";
 import { Eye, EyeClosed } from "lucide-react";
 import { Mail, UserRound, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import logo from "../assets/LearnAcadamy3.png";
 import computador from "../assets/negocio.jpg";
 import gifBackground from "../assets/bJk.gif";
@@ -17,6 +18,9 @@ export const Register: React.FC = () => {
   const passwordRef = useRef<HTMLInputElement>(null);
 
   const { signUp } = useAuth();
+
+  const navigate = useNavigate();
+
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -37,7 +41,8 @@ export const Register: React.FC = () => {
 
     try {
       await signUp({ nome, email, password });
-      alert("Cadastro realizado com sucesso!");
+
+      navigate("/cursosPage");
     } catch (error) {
       alert("Erro ao realizar cadastro. Tente novamente.");
     }

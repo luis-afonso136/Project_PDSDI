@@ -1,31 +1,42 @@
-import React, { useState } from "react";
-import {
-  FaGoogle,
-  FaFacebookF,
-  FaApple,
-} from "react-icons/fa";
+import React, { useState, useContext } from "react";
+import { FaGoogle, FaFacebookF, FaApple } from "react-icons/fa";
 import { Eye, EyeClosed } from "lucide-react";
 import { Mail, Lock } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/LearnAcadamy3.png";
 import computador from "../assets/negocio.jpg";
 import gifBackground from "../assets/bJk.gif";
+import { AuthContext } from "../../context/authContext"; 
 
 export const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");  // Estado para email
+  const [password, setPassword] = useState("");  // Estado para senha
+  const { signIn } = useContext(AuthContext);  // Função signIn do contexto de autenticação
+  const navigate = useNavigate();  // Hook de navegação para redirecionamento após login
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSignIn = (e: React.FormEvent) => {
+  const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    try {
+      // Chamando a função signIn com os dados do formulário
+      await signIn(email, password);
+      
+      // Redirecionando o usuário para a página desejada após login
+      navigate("/cursosPage");  // Altere para a página que você deseja redirecionar após o login
+    } catch (error) {
+      // Lógica de erro se o login falhar
+      console.error("Falha no login", error);
+    }
   };
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center flex items-center justify-center relative"
-      style={{ backgroundImage: `url(${gifBackground})` }}
+      className="min-h-screen bg-gray-900 bg-cover bg-center flex items-center justify-center relative"
     >
       <div className="absolute top-4 left-4">
         <Link to="/">
@@ -49,6 +60,8 @@ export const Login: React.FC = () => {
                   type="email"
                   id="email"
                   placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}  // Atualizando o valor do email
                   className="w-full px-4 py-2 mt-2 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
                 />
               </div>
@@ -66,6 +79,8 @@ export const Login: React.FC = () => {
                   type={showPassword ? "text" : "password"}
                   id="password"
                   placeholder="Type your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}  // Atualizando o valor da senha
                   className="w-full px-4 py-2 mt-2 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
                 />
                 <button
@@ -89,14 +104,12 @@ export const Login: React.FC = () => {
                 Forgot password?
               </a>
             </div>
-            <Link to="/cursosPage">
             <button
               type="submit"
               className="w-full bg-purple-700 text-white py-2 rounded-lg hover:bg-purple-800"
             >
               Sign in
             </button>
-            </Link>
           </form>
 
           <div className="flex items-center mt-6">

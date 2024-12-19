@@ -12,7 +12,7 @@ export type AuthDataContext = {
     // loading: boolean;
     // signOut: () => void;
     signUp: (userData: Register) => Promise<void>;
-    // signIn: (email: string, password: string) => Promise<void>;
+    signIn: (email: string, password: string) => Promise<void>;
     // passwordReset: (email: String) => Promise<void>;
     // passwordUpdate: (newpassword: String) => Promise<void>;
 }
