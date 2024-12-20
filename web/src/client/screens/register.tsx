@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import logo from "../assets/LearnAcadamy3.png";
 import computador from "../assets/negocio.jpg";
-import gifBackground from "../assets/bJk.gif";
 import { useAuth } from "../../hooks/useAuth";
 
 export const Register: React.FC = () => {
@@ -50,8 +49,8 @@ export const Register: React.FC = () => {
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center flex items-center justify-center relative"
-      style={{ backgroundImage: `url(${gifBackground})` }}
+      className="min-h-screen bg-gray-900 bg-center flex items-center justify-center relative"
+      
     >
       <div className="absolute top-4 left-4">
         <Link to="/">

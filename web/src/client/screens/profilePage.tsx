@@ -30,7 +30,7 @@ export const ProfilePage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6 mt-16">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6 pt-28">
       <Navbar onLogout={handleLogout} />
       <div className="w-full max-w-5xl bg-gray-50 shadow-md rounded-lg p-6 flex flex-col md:flex-row items-center md:items-start relative">
         <img

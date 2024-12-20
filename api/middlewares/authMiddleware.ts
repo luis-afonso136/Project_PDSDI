@@ -1,19 +1,25 @@
+import { FastifyReply, FastifyRequest } from "fastify";
 import jwt from "jsonwebtoken";
-import { FastifyRequest, FastifyReply } from "fastify";
 
-const SECRET_KEY = process.env.SECRET_KEY || "";
-
-export const verifyToken = async (request: FastifyRequest, reply: FastifyReply) => {
-  const token = request.headers.authorization?.split(" ")[1]; // Bearer Token
-
+// This function checks whether the user is logged in or not
+export async function verifyAuth(req: FastifyRequest, res: FastifyReply) {
+  // In here we save the token inside cookies
+  const token = req.cookies.token;
+  // if don't have token sends a error message saying 'Token not exist
   if (!token) {
-    return reply.status(401).send({ message: "Unauthorized: No token provided." });
+    return res.status(401).send({ error: "Token not exist" });
   }
 
   try {
-    const decoded = jwt.verify(token, SECRET_KEY);
-    (request as any).user = decoded;
+    // We here decode the jwt(token) received with our scretkey(secretjwt)
+    const decoded = jwt.verify(token, "secretjwt");
+    // if not found decoded returns a message 'user id not found'
+    if (!decoded.sub) {
+      return res.status(401).send({ error: "User id not found" });
+    }
+    req.user = { id: String(decoded.sub) };
+    // console.log(decoded.sub)
   } catch (error) {
-    return reply.status(401).send({ message: "Unauthorized: Invalid token." });
+    return res.status(401).send({ error: "Token invalide" });
   }
-};
+}

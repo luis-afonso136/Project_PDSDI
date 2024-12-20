@@ -5,13 +5,18 @@ import { FastifyReply, FastifyRequest } from "fastify";
 
 const prisma = new PrismaClient();
 const SECRET_KEY = process.env.SECRET_KEY || "";
+const validRoles = ["administrador", "utilizador", "aluno", "professor"];
 
 // Registro
-export const register = async (request: FastifyRequest, reply: FastifyReply) => {
-  const { nome, email, password } = request.body as {
+export const register = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  const { nome, email, password, tipo_utilizador } = request.body as {
     nome: string;
     email: string;
     password: string;
+    tipo_utilizador: string
   };
 
   const existingUser = await prisma.utilizador.findUnique({ where: { email } });
@@ -19,9 +24,15 @@ export const register = async (request: FastifyRequest, reply: FastifyReply) => 
     return reply.status(409).send({ message: "User already exists." });
   }
 
+  const role = tipo_utilizador || "utilizador"; // Define "utilizador" como padrão
+  if (!validRoles.includes(role)) {
+    return reply
+      .status(400)
+      .send({ message: "Invalid role. Allowed roles are: admin, user, member." });
+  }
   const hashedPassword = await bcrypt.hash(password, 10);
   const user = await prisma.utilizador.create({
-    data: { nome, email, password: hashedPassword },
+    data: { nome, email, password: hashedPassword, tipo_utilizador: "user" },
   });
 
   reply.send({ id: user.id_utilizador, name: user.nome, email: user.email });
@@ -39,6 +50,11 @@ export const login = async (request: FastifyRequest, reply: FastifyReply) => {
     return reply.status(401).send({ message: "Invalid credentials." });
   }
 
-  const token = jwt.sign({ id: user.id_utilizador }, SECRET_KEY, { expiresIn: "1h" });
-  reply.send({ token, user: { id: user.id_utilizador, name: user.nome, email: user.email } });
+  const token = jwt.sign({ id: user.id_utilizador }, SECRET_KEY, {
+    expiresIn: "1h",
+  });
+  reply.send({
+    token,
+    user: { id: user.id_utilizador, name: user.nome, email: user.email },
+  });
 };

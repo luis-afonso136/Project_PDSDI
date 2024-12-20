@@ -20,7 +20,7 @@ model Utilizador {
   password        String
   country         String?
   avatar          String?
-  tipo_utilizador String?
+  tipo_utilizador String
 
   createAt         DateTime           @default(now())
   updateAt         DateTime           @updatedAt

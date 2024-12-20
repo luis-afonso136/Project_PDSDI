@@ -5,7 +5,6 @@ import { Mail, Lock } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/LearnAcadamy3.png";
 import computador from "../assets/negocio.jpg";
-import gifBackground from "../assets/bJk.gif";
 import { AuthContext } from "../../context/authContext"; 
 
 export const Login: React.FC = () => {
@@ -61,8 +60,9 @@ export const Login: React.FC = () => {
                   id="email"
                   placeholder="Enter your email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}  // Atualizando o valor do email
+                  onChange={(e) => setEmail(e.target.value)}  
                   className="w-full px-4 py-2 mt-2 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+                  required
                 />
               </div>
             </div>
@@ -82,6 +82,7 @@ export const Login: React.FC = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}  
                   className="w-full px-4 py-2 mt-2 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+                  required
                 />
                 <button
                   type="button"
