@@ -26,6 +26,7 @@ app.register(routes).then(() => {
   console.log("Rotas registadas com sucesso");
 });
 
+
 // Inicialização do servidor
 const startServer = async () => {
   try {

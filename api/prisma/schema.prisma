@@ -14,9 +14,9 @@ datasource db {
 }
 
 model Utilizador {
-  id_utilizador   Int    @id @default(autoincrement())
+  id_utilizador   Int     @id @default(autoincrement())
   nome            String
-  email           String @unique
+  email           String  @unique
   password        String
   country         String?
   avatar          String?
@@ -32,7 +32,7 @@ model Curso {
   nome        String
   categoria   String
   dificuldade String
-  imagem      String
+  imagem      String?
   descricao   String
   Matricula   Matricula[]
 
@@ -46,7 +46,7 @@ model Matricula {
   id_matricula   Int    @id @default(autoincrement())
   data_matricula String
   id_curso       Int    @default(autoincrement())
-  curso          Curso  @relation(fields: [id_curso], references: [id_curso])
+  curso          Curso? @relation(fields: [id_curso], references: [id_curso])
 
   createAt  DateTime    @default(now())
   updateAt  DateTime    @updatedAt
@@ -66,27 +66,18 @@ model Avaliacao {
 }
 
 model Perguntas {
-  id_pergunta Int    @id @default(autoincrement())
-  texto       String
+  id_pergunta Int     @id @default(autoincrement())
+  pergunta    String
   dificuldade String
+  resposta1   String
+  resposta2   String
+  resposta3   String
+  pontuacao   Int
+  correta     Boolean
+  errada      Boolean
 
   id_curso Int   @default(autoincrement())
   curso    Curso @relation(fields: [id_curso], references: [id_curso])
-
-  createAt  DateTime    @default(now())
-  updateAt  DateTime    @updatedAt
-  Respostas Respostas[]
-}
-
-model Respostas {
-  id_resposta Int    @id @default(autoincrement())
-  texto       String
-  pontuacao   Int
-  correta     String
-  errada      String
-
-  id_pergunta Int       @default(autoincrement())
-  pergunta    Perguntas @relation(fields: [id_pergunta], references: [id_pergunta])
 
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
@@ -96,10 +87,10 @@ model Utilizador_Curso {
   id_utilizador_curso Int    @id @default(autoincrement())
   progresso           String
 
-  id_utilizador Int        @default(autoincrement())
+  id_utilizador Int         @default(autoincrement())
   utilizador    Utilizador? @relation(fields: [id_utilizador], references: [id_utilizador])
-  id_curso      Int        @default(autoincrement())
-  curso         Curso      @relation(fields: [id_curso], references: [id_curso])
+  id_curso      Int         @default(autoincrement())
+  curso         Curso?      @relation(fields: [id_curso], references: [id_curso])
 
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt

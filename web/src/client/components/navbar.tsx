@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaBook, FaCog, FaSignOutAlt, FaUser, FaDesktop } from "react-icons/fa";
+import { AuthContext } from "../../context/authContext"; // Importa o AuthContext para acessar o signOut
 
-interface NavbarProps {
-  onLogout: () => void;
-}
+const Navbar: React.FC = () => {
+  const { signOut } = useContext(AuthContext); // Pega a função signOut do contexto
 
-const Navbar: React.FC<NavbarProps> = () => {
+  const handleLogout = () => {
+    signOut(); // Chama a função signOut para deslogar o usuário
+  };
+
   return (
     <header className="bg-gray-900 text-white fixed top-0 left-0 w-full shadow-md z-50">
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
@@ -62,13 +65,13 @@ const Navbar: React.FC<NavbarProps> = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/"
+                  <button
+                    onClick={handleLogout} // Chama o handleLogout quando clicado
                     className="flex items-center w-full text-left px-4 py-2 hover:bg-gray-200 text-red-500"
                   >
                     <FaSignOutAlt className="mr-2 text-red-500" />
                     Sair
-                  </Link>
+                  </button>
                 </li>
               </ul>
             </div>

@@ -37,40 +37,44 @@ export function AuthProvider({ children }: ChildrenContext) {
     };
   }
   
+  // Função de login
   const signIn = async (email: string, password: string) => {
     try {
-      // Enviando os dados de login para o servidor
       const response = await api.post<AuthResponse>("/login", { email, password });
-  
-      // A resposta contém token e user
       const { token, user } = response.data;
-  
-      // Verificando se o token e o user existem
+
       if (token && user) {
-        // Armazenando o token no localStorage
         localStorage.setItem("authToken", token);
-  
-        // Armazenando os dados do usuário no localStorage (em formato JSON)
         localStorage.setItem("user", JSON.stringify(user));
-  
-        // Sucesso: Mensagem para o usuário
         toast.success("Login realizado com sucesso!");
-  
-        // Aqui você pode redirecionar o usuário ou atualizar o estado global
       } else {
         toast.error("Falha na autenticação: dados ausentes.");
       }
     } catch (error: any) {
-      // Tratamento de erro caso a requisição falhe
       toast.error(
         error.response?.data?.message || "Erro ao realizar login!"
       );
     }
   };
+
+  const signOut = () => {
+    try {
+      // Remover o token e os dados do usuário do localStorage
+      localStorage.removeItem("authToken");
+      localStorage.removeItem("user");
   
+      // Salvar uma mensagem de feedback no localStorage
+      localStorage.setItem("logoutMessage", "Logout realizado com sucesso!");
+  
+      // Redirecionar para a página de login
+      window.location.href = "/login";
+    } catch (error) {
+      toast.error("Erro ao realizar logout!");
+    }
+  };  
 
   return (
-    <AuthContext.Provider value={{ signUp, signIn }}>
+    <AuthContext.Provider value={{ signUp, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );

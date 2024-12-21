@@ -25,13 +25,9 @@ export const ProfilePage: React.FC = () => {
     },
   ];
   
-  const handleLogout = () => {
-    alert("Logout efetuado!");
-  };
-
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6 pt-28">
-      <Navbar onLogout={handleLogout} />
+      <Navbar />
       <div className="w-full max-w-5xl bg-gray-50 shadow-md rounded-lg p-6 flex flex-col md:flex-row items-center md:items-start relative">
         <img
           src="https://img.icons8.com/color/200/user.png"

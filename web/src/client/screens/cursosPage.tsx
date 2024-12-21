@@ -129,7 +129,7 @@ const CursosPage: React.FC = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen mt-5 pb-10">
-      <Navbar onLogout={() => alert("Logout efetuado!")} />
+      <Navbar />
 
       <div className="pt-20 px-6">
         <div className="max-w-6xl mx-auto">

@@ -2,13 +2,10 @@ import React from "react";
 import Navbar from "../components/navbar";
 
 const AdminPanel: React.FC = () => {
-  const handleLogout = () => {
-    alert("Logout efetuado!");
-  };
 
   return (
     <div className="flex flex-col h-screen bg-gray-100 text-gray-800 pt-16">
-      <Navbar onLogout={handleLogout} />
+      <Navbar />
 
       <main className="flex-1 p-8 overflow-auto">
         <h1 className="text-3xl font-bold mb-8">Painel de Administração</h1>

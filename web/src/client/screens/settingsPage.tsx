@@ -22,7 +22,7 @@ const SettingsPage: React.FC = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen text-gray-800">
-      <Navbar onLogout={() => alert("Logout efetuado!")} />
+      <Navbar  />
 
       <div className="pt-24 px-6 md:px-12 max-w-6xl mx-auto pb-10">
         <h1 className="text-3xl font-bold text-gray-700 mb-8">Configurações de Conta</h1>

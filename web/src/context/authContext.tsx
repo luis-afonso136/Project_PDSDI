@@ -10,7 +10,7 @@ export default ChildrenContext;
 
 export type AuthDataContext = {
     // loading: boolean;
-    // signOut: () => void;
+    signOut: () => void;
     signUp: (userData: Register) => Promise<void>;
     signIn: (email: string, password: string) => Promise<void>;
     // passwordReset: (email: String) => Promise<void>;

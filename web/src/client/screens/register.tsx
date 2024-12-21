@@ -166,9 +166,7 @@ export const Register: React.FC = () => {
 
           <div className="text-center mt-4">
             <span className="text-gray-500">Already have an account? </span>
-            <Link to="/login">
-              <a className="text-purple-600 hover:underline">Sign in</a>
-            </Link>
+            <Link to="/login" className="text-purple-600 hover:underline">Sign in</Link>
           </div>
         </div>
       </div>
