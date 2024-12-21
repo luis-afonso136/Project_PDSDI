@@ -12,11 +12,10 @@ export const register = async (
   request: FastifyRequest,
   reply: FastifyReply
 ) => {
-  const { nome, email, password, tipo_utilizador } = request.body as {
+  const { nome, email, password } = request.body as {
     nome: string;
     email: string;
     password: string;
-    tipo_utilizador: string
   };
 
   const existingUser = await prisma.utilizador.findUnique({ where: { email } });
@@ -24,7 +23,7 @@ export const register = async (
     return reply.status(409).send({ message: "User already exists." });
   }
 
-  const role = tipo_utilizador || "utilizador"; // Define "utilizador" como padrão
+  const role = "utilizador"; // Define "utilizador" como padrão
   if (!validRoles.includes(role)) {
     return reply
       .status(400)
@@ -32,7 +31,7 @@ export const register = async (
   }
   const hashedPassword = await bcrypt.hash(password, 10);
   const user = await prisma.utilizador.create({
-    data: { nome, email, password: hashedPassword, tipo_utilizador: "user" },
+    data: { nome, email, password: hashedPassword, tipo_utilizador: "utilizador" },
   });
 
   reply.send({ id: user.id_utilizador, name: user.nome, email: user.email });
