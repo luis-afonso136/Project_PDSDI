@@ -30,7 +30,7 @@ model Utilizador {
 model Curso {
   id_curso    Int         @id @default(autoincrement())
   nome        String
-  categoria   String
+  tecnologias   String
   dificuldade String
   imagem      String?
   descricao   String

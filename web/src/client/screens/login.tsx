@@ -4,8 +4,7 @@ import { Eye, EyeClosed } from "lucide-react";
 import { Mail, Lock } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/LearnAcadamy3.png";
-import computador from "../assets/negocio.jpg";
-import { AuthContext } from "../../context/authContext"; 
+import { AuthContext } from "../../context/authContext";
 
 export const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -34,20 +33,14 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <div
-      className="min-h-screen bg-gray-900 bg-cover bg-center flex items-center justify-center relative"
-    >
-      <div className="absolute top-4 left-4">
-        <Link to="/">
-          <img src={logo} alt="Learn Academy Logo" className="h-36" />
-        </Link>
-      </div>
-      <div className="bg-white shadow-lg rounded-2xl flex max-w-6xl h-[600px] overflow-hidden">
-        <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
-          <h2 className="text-2xl font-semibold mb-6 text-center">Login</h2>
+    <div className="min-h-screen bg-gray-900 bg-cover bg-center flex items-center justify-center">
+      <div className="bg-white shadow-lg rounded-2xl flex w-full md:w-1/2 h-[600px] overflow-hidden">
+        {/* Card de Login */}
+        <div className="w-full p-8 bg-gray-900 flex flex-col justify-center">
+          <h2 className="text-2xl font-semibold mb-6 text-center text-white">Login</h2>
           <form onSubmit={handleSignIn}>
             <div className="mb-4 relative">
-              <label htmlFor="email" className="text-sm font-medium">
+              <label htmlFor="email" className="text-sm font-medium text-white">
                 Email
               </label>
               <div className="relative">
@@ -67,7 +60,7 @@ export const Login: React.FC = () => {
               </div>
             </div>
             <div className="mb-4 relative">
-              <label htmlFor="password" className="text-sm font-medium">
+              <label htmlFor="password" className="text-sm font-medium text-white">
                 Password
               </label>
               <div className="relative">
@@ -99,7 +92,7 @@ export const Login: React.FC = () => {
                   type="checkbox"
                   className="form-checkbox text-purple-600"
                 />
-                <span className="ml-2 text-sm">Remember me</span>
+                <span className="ml-2 text-sm text-white">Remember me</span>
               </label>
               <a href="#" className="text-sm text-purple-600 hover:underline">
                 Forgot password?
@@ -136,14 +129,6 @@ export const Login: React.FC = () => {
               <span className="text-purple-600 hover:underline">Sign up</span>
             </Link>
           </div>
-        </div>
-
-        <div className="hidden md:flex w-1/2 h-full">
-          <img
-            src={computador}
-            alt="Programming Illustration"
-            className="w-full h-full object-cover"
-          />
         </div>
       </div>
     </div>
