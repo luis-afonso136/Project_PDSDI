@@ -41,11 +41,6 @@ const CursosPage: React.FC = () => {
       skills: ["ReactJS", "JavaScript"],
     },
     {
-      title: "Full-Stack",
-      level: "Iniciante",
-      skills: ["JavaScript", "NodeJS"],
-    },
-    {
       title: "Python",
       level: "Iniciante",
       skills: ["Python"],
@@ -146,20 +141,18 @@ const CursosPage: React.FC = () => {
             </div>
 
             <div className="flex justify-end mb-4">
-            <button
-              className="bg-purple-700 text-white px-4 py-2 rounded shadow hover:bg-purple-500"
-              onClick={openModal} // Abrir o modal ao clicar
-            >
-              Adicionar Curso
-            </button>
-          </div>
+              <button
+                className="bg-purple-700 text-white px-4 py-2 rounded shadow hover:bg-purple-500"
+                onClick={openModal} // Abrir o modal ao clicar
+              >
+                Adicionar Curso
+              </button>
+            </div>
 
             <select
               className="bg-white p-2 rounded shadow w-full md:w-auto text-gray-600"
               onChange={(e) => setFilter(e.target.value)}
               value={filter}
-
-              
             >
               <option value="all">Todos</option>
               {technologies.map((tech) => (
@@ -201,7 +194,9 @@ const CursosPage: React.FC = () => {
                 <FaBook />
               </div>
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-bold text-gray-800">{course.title}</h3>
+                <h3 className="text-lg font-bold text-gray-800">
+                  {course.title}
+                </h3>
               </div>
               <p className="text-gray-600 mb-4">{course.level}</p>
               <div className="flex flex-wrap gap-2 mt-auto">
@@ -224,7 +219,6 @@ const CursosPage: React.FC = () => {
         </div>
       </div>
 
-      
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-6 rounded-lg shadow-lg w-1/3">
@@ -240,7 +234,9 @@ const CursosPage: React.FC = () => {
                   type="text"
                   className="w-full p-2 border border-gray-300 rounded"
                   value={newCourse.title}
-                  onChange={(e) => setNewCourse({ ...newCourse, title: e.target.value })}
+                  onChange={(e) =>
+                    setNewCourse({ ...newCourse, title: e.target.value })
+                  }
                   required
                 />
               </div>
@@ -251,7 +247,9 @@ const CursosPage: React.FC = () => {
                 <select
                   className="w-full p-2 border border-gray-300 rounded"
                   value={newCourse.level}
-                  onChange={(e) => setNewCourse({ ...newCourse, level: e.target.value })}
+                  onChange={(e) =>
+                    setNewCourse({ ...newCourse, level: e.target.value })
+                  }
                   required
                 >
                   <option value="">Selecione o nível</option>
@@ -269,7 +267,13 @@ const CursosPage: React.FC = () => {
                   className="w-full p-2 border border-gray-300 rounded"
                   value={newCourse.skills}
                   onChange={(e) =>
-                    setNewCourse({ ...newCourse, skills: Array.from(e.target.selectedOptions, option => option.value) })
+                    setNewCourse({
+                      ...newCourse,
+                      skills: Array.from(
+                        e.target.selectedOptions,
+                        (option) => option.value
+                      ),
+                    })
                   }
                   required
                 >

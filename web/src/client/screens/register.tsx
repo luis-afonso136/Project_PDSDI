@@ -46,7 +46,6 @@ export const Register: React.FC = () => {
 
   return (
     <div className="min-h-screen flex">
-      {/* Parte esquerda - Mensagem */}
       <div className="w-full md:w-1/2 bg-gray-900 flex items-center justify-center p-8">
         <div className="text-center text-white">
           <h1 className="text-4xl font-bold mb-4">Junte-se à Learn Academy e comece a sua jornada!</h1>
@@ -54,7 +53,6 @@ export const Register: React.FC = () => {
         </div>
       </div>
 
-      {/* Parte direita - Formulário de registro */}
       <div className="w-full md:w-1/2 bg-white p-8 flex flex-col justify-center">
         <div className="absolute top-4 left-4">
           <Link to="/">
