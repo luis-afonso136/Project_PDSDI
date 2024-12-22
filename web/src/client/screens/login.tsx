@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { FaGoogle, FaFacebookF, FaApple } from "react-icons/fa";
 import { Eye, EyeClosed } from "lucide-react";
 import { Mail, Lock } from "lucide-react";
@@ -12,23 +12,6 @@ export const Login: React.FC = () => {
   const [password, setPassword] = useState("");  // Estado para senha
   const { signIn } = useContext(AuthContext);  // Função signIn do contexto de autenticação
   const navigate = useNavigate();  // Hook de navegação para redirecionamento após login
-
-  const [typedText, setTypedText] = useState("");  // Estado para o texto que está sendo digitado
-  const text = "Bem-vindo ao Learn Academy";  // Texto que será mostrado no efeito typewriter
-
-  useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i < text.length) {
-        setTypedText((prev) => prev + text[i]);
-        i += 1;
-      } else {
-        clearInterval(interval); // Limpar o intervalo quando o texto for completamente exibido
-      }
-    }, 100); // Intervalo de 100ms entre as letras
-
-    return () => clearInterval(interval); // Limpar intervalo ao desmontar o componente
-  }, []);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -51,10 +34,10 @@ export const Login: React.FC = () => {
 
   return (
     <div className="min-h-screen flex">
-      {/* Parte esquerda - Fundo cinza escuro com efeito typewriter */}
+      {/* Parte esquerda - Fundo cinza escuro */}
       <div className="w-full md:w-1/2 bg-gray-900 flex items-center justify-center p-8">
         <div className="text-center text-white">
-          <h1 className="text-4xl font-bold mb-4">{typedText}</h1>
+          <h1 className="text-4xl font-bold mb-4">Bem-vindo ao Learn Academy</h1>
           <p className="text-lg">Sua jornada para dominar novas habilidades começa aqui. Faça login para continuar.</p>
         </div>
       </div>

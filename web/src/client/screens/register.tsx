@@ -1,4 +1,4 @@
-import React, { FormEvent, useState, useRef, useEffect } from "react";
+import React, { FormEvent, useState, useRef } from "react";
 import { FaGoogle, FaFacebookF, FaApple } from "react-icons/fa";
 import { Eye, EyeClosed } from "lucide-react";
 import { Mail, UserRound, Lock } from "lucide-react";
@@ -16,9 +16,6 @@ export const Register: React.FC = () => {
 
   const { signUp } = useAuth();
   const navigate = useNavigate();
-
-  const [typedText, setTypedText] = useState("");  // Estado para o texto que será digitado
-  const text = "Junte-se à Learn Academy e comece a sua jornada!";  // Texto para o efeito typewriter
 
   // Função para alternar a visibilidade da senha
   const togglePasswordVisibility = () => {
@@ -47,27 +44,12 @@ export const Register: React.FC = () => {
     }
   };
 
-  // Efeito typewriter para o texto
-  useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i < text.length) {
-        setTypedText((prev) => prev + text[i]);
-        i += 1;
-      } else {
-        clearInterval(interval); // Limpar o intervalo quando o texto for completamente exibido
-      }
-    }, 100); // Intervalo de 100ms entre as letras
-
-    return () => clearInterval(interval); // Limpar intervalo ao desmontar o componente
-  }, []);
-
   return (
     <div className="min-h-screen flex">
-      {/* Parte esquerda - Efeito typewriter */}
+      {/* Parte esquerda - Mensagem */}
       <div className="w-full md:w-1/2 bg-gray-900 flex items-center justify-center p-8">
         <div className="text-center text-white">
-          <h1 className="text-4xl font-bold mb-4">{typedText}</h1>
+          <h1 className="text-4xl font-bold mb-4">Junte-se à Learn Academy e comece a sua jornada!</h1>
           <p className="text-lg">Registe-se para começar sua jornada com a Learn Academy.</p>
         </div>
       </div>
