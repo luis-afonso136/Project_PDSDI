@@ -15,6 +15,9 @@ export function verifyRoles(requiredRoles: string[]) {
         select: { tipo_utilizador: true }
       });
 
+      console.log(user?.tipo_utilizador)
+      console.log('user' + JSON.stringify(user))
+
       /* If it is not user(user_id not evaluable) or rule type, which is found 
       in the roles table according to the user id and the rule type it received at the 
       start of the function, then access is denied.
@@ -24,6 +27,7 @@ export function verifyRoles(requiredRoles: string[]) {
       }
     } catch (error) {
       // if something happens in the api it returns a Error message
+      // console.log(error)
       return res.status(500).send({ error: "You're not logged in! Please log in first" });
     }
   };

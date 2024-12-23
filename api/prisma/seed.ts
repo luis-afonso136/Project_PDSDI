@@ -8,7 +8,7 @@ async function main() {
     data: {
       nome: "Luis Afonso",
       email: "luis@admin.pt",
-      password: "luisadmin",
+      password: "$2a$10$wtlP/lzt.bpxPR.loN1wwekGYagY6jZDlaTYytY20Cbk798bLvuFm", // luiadmin
       tipo_utilizador: "administrador",
       country: "Portugal",
     },

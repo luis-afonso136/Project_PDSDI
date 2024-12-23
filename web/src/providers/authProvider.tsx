@@ -64,7 +64,7 @@ export function AuthProvider({ children }: ChildrenContext) {
       localStorage.removeItem("user");
   
       // Salvar uma mensagem de feedback no localStorage
-      localStorage.setItem("logoutMessage", "Logout realizado com sucesso!");
+      toast.success("LogOut realizado com sucesso!");
   
       // Redirecionar para a página de login
       window.location.href = "/login";

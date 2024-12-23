@@ -1,6 +1,5 @@
 import fastify from "fastify";
 import dotenv from "dotenv";
-import authRoutes from "./routes/authRoutes";
 import fastifyCors from "@fastify/cors";
 import fastifyCookie from "@fastify/cookie";
 import { routes } from "./routes/routes";
@@ -16,6 +15,7 @@ app.register(fastifyCors, {
 });
 
 app.register(fastifyCookie);
+
 // Rota raiz (opcional, mas resolve o erro 404 para `/`)
 app.get("/", async (request, reply) => {
   reply.send({ message: "Bem-vindo à API!." });
@@ -25,7 +25,6 @@ app.get("/", async (request, reply) => {
 app.register(routes).then(() => {
   console.log("Rotas registadas com sucesso");
 });
-
 
 // Inicialização do servidor
 const startServer = async () => {

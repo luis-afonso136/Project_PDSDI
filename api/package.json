@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npx tsx watch src/server.ts",
-    "seed": "tsx prisma/seed.ts"
+    "seed": "npx tsx prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +13,7 @@
   "dependencies": {
     "@fastify/cookie": "^11.0.1",
     "@fastify/cors": "^10.0.1",
-    "@prisma/client": "^6.0.1",
+    "@prisma/client": "^6.1.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.7",

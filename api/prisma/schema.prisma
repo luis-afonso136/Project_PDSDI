@@ -30,7 +30,7 @@ model Utilizador {
 model Curso {
   id_curso    Int         @id @default(autoincrement())
   nome        String
-  tecnologias   String
+  categoria   String
   dificuldade String
   imagem      String?
   descricao   String
@@ -94,4 +94,11 @@ model Utilizador_Curso {
 
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
+}
+
+enum tipo_utilizador {
+  administrador
+  utilizador
+  professor
+  
 }
