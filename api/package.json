@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "npx tsx server.ts",
+    "start": "npx tsx watch src/server.ts",
     "seed": "tsx prisma/seed.ts"
   },
   "keywords": [],
