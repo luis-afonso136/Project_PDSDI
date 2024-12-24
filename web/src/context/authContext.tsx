@@ -9,9 +9,8 @@ interface ChildrenContext {
 export default ChildrenContext;
 
 export type AuthDataContext = {
-    
     loading: boolean;
-    user: number | null;
+    isLoggedIn: boolean;
     signOut: () => void;
     signUp: (userData: Register) => Promise<void>;
     signIn: (email: string, password: string) => Promise<void>;

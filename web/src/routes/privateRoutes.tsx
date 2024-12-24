@@ -1,6 +1,6 @@
+import { Loader } from 'lucide-react'
 import { ReactNode } from 'react'
 import { Navigate } from 'react-router-dom'
-
 import { useAuth } from '../hooks/useAuth'
 
 interface PrivateRoutesProps {
@@ -12,13 +12,14 @@ export function PrivateRoutes({
     element,
     notHaveAccessNavigateTo
 }: PrivateRoutesProps) {
-    const { user, loading} = useAuth()
+
+    const { isLoggedIn, loading } = useAuth()
 
     if (loading) {
         return (
-            <p>Carregando...</p>
+            <Loader size={80}/>
         )
     }
 
-    return user ? element : <Navigate to={notHaveAccessNavigateTo} replace />
+    return isLoggedIn ? element : <Navigate to={notHaveAccessNavigateTo} replace />
 }

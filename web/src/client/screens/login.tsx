@@ -1,54 +1,48 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useRef, FormEvent } from "react";
 import { FaGoogle, FaFacebookF, FaApple } from "react-icons/fa";
 import { Eye, EyeClosed } from "lucide-react";
 import { Mail, Lock } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/LearnAcadamy3.png";
-import { AuthContext } from "../../context/authContext";
+import { useAuth } from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 export const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");  // Estado para email
-  const [password, setPassword] = useState("");  // Estado para senha
-  const { signIn } = useContext(AuthContext);  // Função signIn do contexto de autenticação
-  const navigate = useNavigate();  // Hook de navegação para redirecionamento após login
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSignIn = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    
     try {
-      // Chamando a função signIn com os dados do formulário
-      await signIn(email, password);
-      
-      // Redirecionando o usuário para a página desejada após login
-      navigate("/cursosPage"); 
+      if (!passwordRef.current?.value || !emailRef.current?.value) {
+        toast.error("Please fill in the fields");
+        return;
+      }
+      await signIn(emailRef.current.value, passwordRef.current.value);
+      navigate("/cursosPage");
     } catch (error) {
-      // Lógica de erro se o login falhar
-      console.error("Falha no login", error);
+      console.log(error);
+      toast.error("Email or Password Incorrect");
     }
   };
 
   return (
-    <div className="min-h-screen flex">
-      <div className="w-full md:w-1/2 bg-gray-900 flex items-center justify-center p-8">
-        <div className="text-center text-white">
-          <h1 className="text-4xl font-bold mb-4">Bem-vindo ao Learn Academy</h1>
-          <p className="text-lg">Sua jornada para dominar novas habilidades começa aqui. Faça login para continuar.</p>
-        </div>
+    <div className="min-h-screen bg-gray-900 bg-cover bg-center flex items-center justify-center relative">
+      <div className="absolute top-4 left-4">
+        <Link to="/">
+          <img src={logo} alt="Learn Academy Logo" className="h-36" />
+        </Link>
       </div>
-
-      <div className="w-full md:w-1/2 bg-white p-8 flex flex-col justify-center">
-        <div className="absolute top-4 left-4">
-          <Link to="/">
-            <img src={logo} alt="Learn Academy Logo" className="h-36" />
-          </Link>
-        </div>
+      <div className="bg-white shadow-lg rounded-2xl flex max-w-6xl w-full h-auto p-8 flex-col justify-center">
         <h2 className="text-2xl font-semibold mb-6 text-center">Login</h2>
-        <form onSubmit={handleSignIn}>
+        <form onSubmit={handleSubmit}>
           <div className="mb-4 relative">
             <label htmlFor="email" className="text-sm font-medium">
               Email
@@ -61,17 +55,16 @@ export const Login: React.FC = () => {
               <input
                 type="email"
                 id="email"
-                placeholder="Digite seu email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}  
+                placeholder="Enter your email"
                 className="w-full px-4 py-2 mt-2 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+                ref={emailRef}
                 required
               />
             </div>
           </div>
           <div className="mb-4 relative">
             <label htmlFor="password" className="text-sm font-medium">
-              Senha
+              Password
             </label>
             <div className="relative">
               <Lock
@@ -81,10 +74,9 @@ export const Login: React.FC = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
-                placeholder="Digite sua senha"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}  
+                placeholder="Type your password"
                 className="w-full px-4 py-2 mt-2 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+                ref={passwordRef}
                 required
               />
               <button
@@ -102,23 +94,23 @@ export const Login: React.FC = () => {
                 type="checkbox"
                 className="form-checkbox text-purple-600"
               />
-              <span className="ml-2 text-sm">Lembrar de mim</span>
+              <span className="ml-2 text-sm">Remember me</span>
             </label>
             <a href="#" className="text-sm text-purple-600 hover:underline">
-              Esqueceu a senha?
+              Forgot password?
             </a>
           </div>
           <button
             type="submit"
             className="w-full bg-purple-700 text-white py-2 rounded-lg hover:bg-purple-800"
           >
-            Entrar
+            Sign in
           </button>
         </form>
 
         <div className="flex items-center mt-6">
           <hr className="flex-grow border-gray-300" />
-          <span className="mx-2 text-gray-500">Ou entre com</span>
+          <span className="mx-2 text-gray-500">Or sign in with</span>
           <hr className="flex-grow border-gray-300" />
         </div>
 
@@ -134,9 +126,9 @@ export const Login: React.FC = () => {
           </button>
         </div>
         <div className="text-center mt-4">
-          <span className="text-gray-500">Não tem uma conta? </span>
+          <span className="text-gray-500">Don't have an account? </span>
           <Link to="/register">
-            <span className="text-purple-600 hover:underline">Cadastre-se</span>
+            <span className="text-purple-600 hover:underline">Sign up</span>
           </Link>
         </div>
       </div>

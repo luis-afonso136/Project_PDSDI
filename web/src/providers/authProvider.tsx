@@ -2,101 +2,98 @@ import { api } from "../axios/axios";
 import ChildrenContext, { AuthContext } from "../context/authContext";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { registerSchema, Register } from "../DTO/userdto";
+import { Register } from "../DTO/userdto";
+import { jwtDecode } from "jwt-decode";
+import Cookies from "js-cookie";
 
 export function AuthProvider({ children }: ChildrenContext) {
-  const [user, setUserId] = useState<number | null>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const checkUserAuthentication = async () => {
+    const checkLogin = () => {
       try {
-        // Verificar se o usuário está autenticado ao carregar o app
-        const storedUser = localStorage.getItem("user");
-        if (storedUser) {
-          const parsedUser = JSON.parse(storedUser);
-          // Aqui você pode adicionar uma validação para garantir que os dados do usuário estão corretos
-          if (parsedUser && parsedUser.id) {
-            setUserId(parsedUser.id); // Atualizar user_id com o ID do usuário armazenado
-          }
+        const token = Cookies.get("token"); // Nome do cookie com o token
+
+        if (!token) {
+          setIsLoggedIn(false);
+          setLoading(false);
+          return;
         }
+
+        const decoded = jwtDecode(token);
+
+        console.log("decoded token: " + JSON.stringify(decoded));
+        console.log("decoded token: " + JSON.stringify(decoded.sub));
+
+        if (decoded.sub) {
+          setIsLoggedIn(true);
+        } else {
+          setIsLoggedIn(false);
+        }
+
+        setLoading(false); // Desativar o indicador de carregamento após verificar o login
       } catch (error) {
-        console.error("Erro ao carregar dados do usuário do localStorage", error);
-      } finally {
-        setLoading(false); // Finalizar o estado de carregamento
+        console.error("Erro ao verificar login:", error);
+        setIsLoggedIn(false);
+        setLoading(false); // Desativar o indicador de carregamento em caso de erro
       }
     };
-  
-    checkUserAuthentication();
-  }, []);
-  
 
-  // Função para registrar o usuário
+    checkLogin();
+  }, []);
+
   const signUp = async (userData: Register) => {
+    setLoading(true); // Ativar o indicador de carregamento antes de fazer a chamada
     try {
       const { nome, email, password } = userData;
-
-      const response = await api.post("/register", {
+      await api.post("/register", {
         nome,
         email,
         password,
       });
-
       toast.success("Registro realizado com sucesso!");
-    } catch (error: any) {
-      toast.error(
-        error.response?.data?.message || "Erro ao realizar cadastro!"
-      );
+    } catch (error) {
+      toast.error("Erro ao realizar cadastro!" + error);
+    } finally {
+      setLoading(false); // Desativar o indicador de carregamento após a operação
     }
   };
 
-  interface AuthResponse {
-    token: string;
-    user: {
-      id: number;
-      name: string;
-      email: string;
-    };
-  }
-  
-  // Função de login
   const signIn = async (email: string, password: string) => {
+    setLoading(true); // Ativar o indicador de carregamento antes de fazer a chamada
     try {
-      const response = await api.post<AuthResponse>("/login", { email, password });
-      const { token, user } = response.data;
-
-      if (token && user) {
-        localStorage.setItem("authToken", token);
-        localStorage.setItem("user", JSON.stringify(user));
-        toast.success("Login realizado com sucesso!");
-      } else {
-        toast.error("Falha na autenticação: dados ausentes.");
-      }
-    } catch (error: any) {
-      toast.error(
-        error.response?.data?.message || "Erro ao realizar login!"
-      );
+      await api.post("/login", {
+        email,
+        password,
+      });
+      toast.success("Login realizado com sucesso!");
+      setIsLoggedIn(true); // Atualizar o estado de login após sucesso
+    } catch (error) {
+      console.log("Error: " + error);
+      toast.error("Erro ao realizar login!");
+    } finally {
+      setLoading(false); // Desativar o indicador de carregamento após a operação
     }
   };
 
   const signOut = () => {
     try {
-      // Remover o token e os dados do usuário do localStorage
-      localStorage.removeItem("authToken");
-      localStorage.removeItem("user");
+      // Remover o cookie de autenticação (substitua 'authToken' pelo nome do cookie que está sendo usado)
+      Cookies.remove('token');
   
       // Salvar uma mensagem de feedback no localStorage
       toast.success("LogOut realizado com sucesso!");
   
-      // Redirecionar para a página de login
+      // // Redirecionar para a página de login
       window.location.href = "/login";
     } catch (error) {
-      toast.error("Erro ao realizar logout!");
+      toast.error("Erro ao realizar logout!" + error);
     }
-  };  
+  };
 
   return (
-    <AuthContext.Provider value={{ signUp, signIn, signOut, user, loading }}>
+    <AuthContext.Provider value={{ signUp, signIn, isLoggedIn, loading, signOut }}>
       {children}
     </AuthContext.Provider>
   );
