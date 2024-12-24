@@ -7,6 +7,7 @@ import CursosPage from "../client/screens/cursosPage";
 import SettingsPage from "../client/screens/settingsPage";
 import AdminPanel from "../client/screens/adminPanel";
 import ProfilePage from "../client/screens/profilePage";
+import { PrivateRoutes } from "./privateRoutes"; // Importando o componente
 
 export const router = createBrowserRouter([
   {
@@ -29,37 +30,57 @@ export const router = createBrowserRouter([
   {
     path: "/cursosPage",
     element: (
-      <div>
-        <CursosPage/> 
-        <Footer /> 
-      </div>
-    ), 
+      <PrivateRoutes 
+        element={
+          <div>
+            <CursosPage />
+            <Footer />
+          </div>
+        } 
+        notHaveAccessNavigateTo="/login" 
+      />
+    ),
   },
   {
     path: "/settingsPage",
     element: (
-      <div>
-        <SettingsPage/> 
-        <Footer />
-      </div>
-    ), 
+      <PrivateRoutes 
+        element={
+          <div>
+            <SettingsPage />
+            <Footer />
+          </div>
+        } 
+        notHaveAccessNavigateTo="/login" 
+      />
+    ),
   },
   {
     path: "/adminPanel",
     element: (
-      <div>
-        <AdminPanel/> 
-        <Footer />
-      </div>
-    ), 
+      <PrivateRoutes 
+        element={
+          <div>
+            <AdminPanel />
+            <Footer />
+          </div>
+        } 
+        notHaveAccessNavigateTo="/login" 
+      />
+    ),
   },
   {
     path: "/profilePage",
     element: (
-      <div>
-        <ProfilePage/> 
-        <Footer />
-      </div>
-    ), 
+      <PrivateRoutes 
+        element={
+          <div>
+            <ProfilePage />
+            <Footer />
+          </div>
+        } 
+        notHaveAccessNavigateTo="/login" 
+      />
+    ),
   },
 ]);

@@ -1,13 +1,35 @@
 import { api } from "../axios/axios";
 import ChildrenContext, { AuthContext } from "../context/authContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { registerSchema, Register } from "../DTO/userdto";
 
 export function AuthProvider({ children }: ChildrenContext) {
+  const [user, setUserId] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    return () => {};
+    const checkUserAuthentication = async () => {
+      try {
+        // Verificar se o usuário está autenticado ao carregar o app
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+          const parsedUser = JSON.parse(storedUser);
+          // Aqui você pode adicionar uma validação para garantir que os dados do usuário estão corretos
+          if (parsedUser && parsedUser.id) {
+            setUserId(parsedUser.id); // Atualizar user_id com o ID do usuário armazenado
+          }
+        }
+      } catch (error) {
+        console.error("Erro ao carregar dados do usuário do localStorage", error);
+      } finally {
+        setLoading(false); // Finalizar o estado de carregamento
+      }
+    };
+  
+    checkUserAuthentication();
   }, []);
+  
 
   // Função para registrar o usuário
   const signUp = async (userData: Register) => {
@@ -74,7 +96,7 @@ export function AuthProvider({ children }: ChildrenContext) {
   };  
 
   return (
-    <AuthContext.Provider value={{ signUp, signIn, signOut }}>
+    <AuthContext.Provider value={{ signUp, signIn, signOut, user, loading }}>
       {children}
     </AuthContext.Provider>
   );
