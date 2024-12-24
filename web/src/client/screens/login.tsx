@@ -40,7 +40,7 @@ export const Login: React.FC = () => {
           <img src={logo} alt="Learn Academy Logo" className="h-36" />
         </Link>
       </div>
-      <div className="bg-white shadow-lg rounded-2xl flex max-w-6xl w-full h-auto p-8 flex-col justify-center">
+      <div className="bg-white shadow-lg rounded-2xl flex max-w-md h-[600px] w-full p-8 flex-col justify-center">
         <h2 className="text-2xl font-semibold mb-6 text-center">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4 relative">
