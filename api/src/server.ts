@@ -9,7 +9,7 @@ dotenv.config();
 const app = fastify();
 
 app.register(fastifyCors, {
-  origin: "http://localhost:5173", // URL do seu frontend
+  origin: true, // URL do seu frontend
   credentials: true, // Permitir envio de cookies
   methods: ["GET", "POST", "PUT", "DELETE"], // Permite apenas esses métodos
 });

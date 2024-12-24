@@ -1,26 +1,28 @@
 import { prisma } from "../../lib/prisma";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { adminService } from "../services/adminService";
-import { insertUserSchema } from "../schemas/adminSchemas";
+import { updateUserSchema, userIdSchema } from "../schemas/adminSchemas";
 
 export const adminController = {
-  async verifyInsertUtilizador(req: FastifyRequest, res: FastifyReply) {
+  async verifyUpdateUser(req: FastifyRequest, res: FastifyReply) {
     try {
-      const user = insertUserSchema.parse(req.body);
+      const { id_utilizador } = userIdSchema.parse(req.params);
 
-      const existingUser = await prisma.utilizador.findUnique({
-        where:{
-          email: user.email
-        }
-      })
+      const { nome, email, tipo_utilizador } = updateUserSchema.parse(req.body);
 
-      if(existingUser){
-        return res.status(409).send({ message: "Um utilizador com esse E-mail já se encontra registado." });
+      // Garantir que os campos estão definidos
+      if (!nome || !email || !tipo_utilizador) {
+        return res.status(400).send({
+          error: "Os campos nome, email e tipo_utilizador são obrigatórios.",
+        });
       }
 
-
-
-      const userRegisted = await adminService.Register(user);
+      const userRegisted = await adminService.updateUser(
+        id_utilizador,
+        nome,
+        email,
+        tipo_utilizador
+      );
 
       // usar so para em modo desenvolvimento
       res.send(userRegisted);
@@ -33,5 +35,4 @@ export const adminController = {
         .send({ error: "Error in register user" + JSON.stringify(err) });
     }
   },
-
 };

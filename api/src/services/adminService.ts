@@ -1,36 +1,35 @@
 import { prisma } from "../../lib/prisma";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import { InsertUser, insertUserSchema } from "../schemas/adminSchemas";
-import { never } from "zod";
+import { UpdateUser, updateUserSchema } from "../schemas/adminSchemas";
 
-export const adminService = {
-
-  
-  async Register(user: InsertUser){
-
-    const { password, tipo_utilizador } = insertUserSchema.parse(user)
-
+export const adminService = {  
+  async updateUser (id_utilizador: number, nome: string, email: string, tipo_utilizador: string) {
     try {
 
-      const hashedPassword = await bcrypt.hash(password, 10);
-
-      const newUser = await prisma.utilizador.create({
-        data: {
-          nome: user.nome,
-          email: user.email,
-          password: hashedPassword,
-          tipo_utilizador: user.tipo_utilizador
+      const userUpdated = await prisma.utilizador.update({
+        where:{
+          id_utilizador:  id_utilizador,
+        },
+        data:{
+          nome: nome !== undefined ? nome : undefined,
+          email: email ! == undefined ? email : undefined,
+          tipo_utilizador: tipo_utilizador !== undefined ? tipo_utilizador : undefined
         }
       })
 
-      return { newUser }
-
-    } catch (err) {
-      console.log('err')
-      throw new Error("Error in user register");
+      return { userUpdated }
+    } catch (error) {
+      throw new Error('Erro a atualizar utilizador: ' + error)
     }
   },
+
+  async deleteUser (){
+    try {
+      
+    } catch (error) {
+      throw new Error('Erro ao apagar utilizador: ' + error)
+    }
+  }
 
 };
 

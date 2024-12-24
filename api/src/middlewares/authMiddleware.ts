@@ -18,7 +18,7 @@ export async function verifyAuth(req: FastifyRequest, res: FastifyReply) {
       return res.status(401).send({ error: "User id not found" });
     }
     req.user = { id: String(decoded.sub) };
-    console.log('token decoded' + decoded.sub)
+    // console.log('token decoded: ' + decoded.sub)
   } catch (error) {
     return res.status(401).send({ error: "Token invalide" });
   }

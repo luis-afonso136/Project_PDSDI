@@ -44,7 +44,7 @@ export const authService = {
       }
 
       // criar token para guardar nas cookies
-      const token = jwt.sign({}, "secretjwt", { expiresIn: "1d", subject: user.id_utilizador.toString() });
+      const token = jwt.sign({}, "postgres", { expiresIn: "1d", subject: user.id_utilizador.toString() });
 
       // usar so em modo desevolvimento
       // return { token, user };
@@ -55,5 +55,20 @@ export const authService = {
       throw new Error("Ocorred an error in user login!!!");
     }
   },
+
+  async verifyToken(token: string) {
+    try {
+      const secret = process.env.JWT_SECRET; // Certifique-se de que a variável de ambiente está configurada
+      if (!secret) {
+        throw new Error('JWT_SECRET não configurado');
+      }
+  
+      // Verifica e decodifica o token JWT
+      return jwt.verify(token, secret) as { sub: string }; // Ajuste o tipo conforme necessário
+    } catch (error) {
+      throw new Error('Token inválido ou expirado');
+    }
+  }
+
 };
 

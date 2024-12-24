@@ -4,5 +4,6 @@ import { authController } from "../controllers/authController";
 export async function authRoutes(app: FastifyInstance) {
   app.post("/register", authController.verifyRegister);
   app.post("/login", authController.verifyLogin);
+  app.post("/check-login", authController.checkLoginController);
   app.post("/logout", authController.verifyLogout);
 }

@@ -1,17 +1,13 @@
 import { prisma } from "../../lib/prisma";
-
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { authService } from "../services/authService";
 import { loginSchema, registerSchema } from "../schemas/authSchemas";
-
-const SECRET_KEY = process.env.SECRET_KEY || "";
-// const validRoles = ["administrador", "utilizador", "aluno", "professor"];
+import { validateRequest } from "../middlewares/validationMiddleware";
 
 export const authController = {
   async verifyRegister(req: FastifyRequest, res: FastifyReply) {
     try {
+      validateRequest(registerSchema)
       const user = registerSchema.parse(req.body);
 
       const existingUser = await prisma.utilizador.findUnique({
@@ -48,7 +44,7 @@ export const authController = {
       );
 
       // return {code: 200, body}
-      return res.status(200).setCookie('token', body.token, { path: '/', httpOnly: true, secure: true }).status(200).send(body)
+      return res.setCookie('token', body.token, { path: '/' }).status(200).send(body)
     } catch (err) {
       res.status(401).send({ error: err });
     }
@@ -65,4 +61,20 @@ export const authController = {
       res.status(500).send({ error: "Failed to logout" });
     }
   },
+
+  async  checkLoginController(req: FastifyRequest, reply: FastifyReply) {
+    try {
+      const token = req.cookies.token; // Obter o token dos cookies
+      if (!token) {
+        return reply.status(401).send({ error: 'Não autenticado' });
+      }
+  
+      // Verificar o token através do service
+      const decoded = await authService.verifyToken(token);
+      return reply.status(200).send({ userId: decoded.sub });
+    } catch (error) {
+      console.error('Erro ao verificar token:', error);
+      return reply.status(401).send({ error: 'Token inválido' });
+    }
+  }
 };

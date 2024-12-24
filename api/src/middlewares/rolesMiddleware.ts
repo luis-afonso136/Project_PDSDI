@@ -15,8 +15,8 @@ export function verifyRoles(requiredRoles: string[]) {
         select: { tipo_utilizador: true }
       });
 
-      console.log(user?.tipo_utilizador)
-      console.log('user' + JSON.stringify(user))
+      // console.log(user?.tipo_utilizador)
+      // console.log('user' + JSON.stringify(user))
 
       /* If it is not user(user_id not evaluable) or rule type, which is found 
       in the roles table according to the user id and the rule type it received at the 
