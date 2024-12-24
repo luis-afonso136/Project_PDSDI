@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../client/screens/home";  
+import Home from "../client/screens/home";
 import Login from "../client/screens/login";
-import Register from "../client/screens/register";   
+import Register from "../client/screens/register";
 import Footer from "../client/components/footer";
 import CursosPage from "../client/screens/cursosPage";
 import SettingsPage from "../client/screens/settingsPage";
@@ -14,72 +14,72 @@ export const router = createBrowserRouter([
     path: "/",
     element: (
       <div>
-        <Home /> 
-        <Footer /> 
+        <Home />
+        <Footer />
       </div>
     ),
   },
   {
     path: "/login",
-    element: <Login />, 
+    element: <Login />,
   },
   {
     path: "/register",
-    element: <Register />, 
+    element: <Register />,
   },
   {
     path: "/cursosPage",
     element: (
-      <PrivateRoutes 
+      <PrivateRoutes
         element={
           <div>
             <CursosPage />
             <Footer />
           </div>
-        } 
-        notHaveAccessNavigateTo="/login" 
+        }
+        notHaveAccessNavigateTo="/login"
       />
     ),
   },
   {
     path: "/settingsPage",
     element: (
-      <PrivateRoutes 
+      <PrivateRoutes
         element={
           <div>
             <SettingsPage />
             <Footer />
           </div>
-        } 
-        notHaveAccessNavigateTo="/login" 
+        }
+        notHaveAccessNavigateTo="/login"
       />
     ),
   },
   {
     path: "/adminPanel",
     element: (
-      <PrivateRoutes 
+      <PrivateRoutes
         element={
           <div>
             <AdminPanel />
             <Footer />
           </div>
-        } 
-        notHaveAccessNavigateTo="/login" 
+        }
+        notHaveAccessNavigateTo="/login"
       />
     ),
   },
   {
     path: "/profilePage",
     element: (
-      <PrivateRoutes 
+      <PrivateRoutes
         element={
           <div>
             <ProfilePage />
             <Footer />
           </div>
-        } 
-        notHaveAccessNavigateTo="/login" 
+        }
+        notHaveAccessNavigateTo="/login"
       />
     ),
   },

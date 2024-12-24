@@ -9,6 +9,7 @@ interface ChildrenContext {
 export default ChildrenContext;
 
 export type AuthDataContext = {
+    
     loading: boolean;
     user: number | null;
     signOut: () => void;

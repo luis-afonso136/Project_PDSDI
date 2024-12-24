@@ -25,7 +25,7 @@ export const Login: React.FC = () => {
       await signIn(email, password);
       
       // Redirecionando o usuário para a página desejada após login
-      navigate("/cursosPage");  // Altere para a página que você deseja redirecionar após o login
+      navigate("/cursosPage"); 
     } catch (error) {
       // Lógica de erro se o login falhar
       console.error("Falha no login", error);
