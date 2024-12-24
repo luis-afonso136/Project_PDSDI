@@ -46,6 +46,11 @@ export const Register: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 bg-cover bg-center flex items-center justify-center relative">
+
+      <div className="absolute h-[400px] w-[400px] bg-purple-700 rounded-full blur-3xl opacity-40 -top-20 -left-20"></div>
+
+      <div className="absolute h-[300px] w-[300px] bg-purple-500 rounded-full blur-3xl opacity-50 bottom-0 right-0"></div>
+
       <div className="absolute top-4 left-4">
         <Link to="/">
           <img src={logo} alt="Learn Academy Logo" className="h-36" />
