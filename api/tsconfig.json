@@ -1,12 +1,16 @@
 {
-    "compilerOptions": {
-      "target": "ESNext",
-      "module": "CommonJS",
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "outDir": "dist"
-    },
-    "include": ["**/*.ts"]
-  }
-  
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "types": ["node", "fastify"]
+  },
+  "include": [
+    "src/**/*.ts",
+    "types/**/*.d.ts"
+  ]
+}

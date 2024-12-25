@@ -12,7 +12,7 @@ export async function verifyAuth(req: FastifyRequest, res: FastifyReply) {
 
   try {
     // We here decode the jwt(token) received with our scretkey(secretjwt)
-    const decoded = jwt.verify(token, "secretjwt");
+    const decoded = jwt.verify(token, "postgres");
     // if not found decoded returns a message 'user id not found'
     if (!decoded.sub) {
       return res.status(401).send({ error: "User id not found" });

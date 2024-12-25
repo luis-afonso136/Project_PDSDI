@@ -19,7 +19,7 @@ model Utilizador {
   email           String  @unique
   password        String
   country         String?
-  avatar          String?
+  avatar          Bytes?
   tipo_utilizador String
 
   createAt         DateTime           @default(now())

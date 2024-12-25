@@ -1,21 +1,24 @@
-import { z } from "zod";
+import { coerce, z } from "zod";
 
-// Atualizando o schema para refletir a estrutura de respostas
-export const perguntasSchema = z.object({
-  pergunta: z.string(),
-  dificuldade: z.string(),
-  pontuacao: z.number(),
-  correta: z.boolean(),
-  errada: z.boolean(),
-  resposta1: z.string(),
-  resposta2: z.string(),
-  resposta3: z.string(),
-});
+const updateUtilizadorSchema = z.object({
+  nome: z.string().optional(),
+  email: z.string().optional(),
+  password: z.string().optional(),
+  country: z.string().optional(),
+  avatar: z.string().optional()
+})
 
-export const userSchema = z.object({
-  nome: z.string(),
-  categoria: z.string(),
-  dificuldade: z.string(),
-  descricao: z.string(),
-  perguntas: z.array(perguntasSchema), // Usando um array de perguntas
-});
+type updateUtilizador = z.infer<typeof updateUtilizadorSchema>
+
+const  userIdSchema = z.object({
+  id_utilizador: z.coerce.number().int()
+})
+
+type userId = z.infer<typeof userIdSchema>
+
+export {
+  updateUtilizadorSchema,
+  updateUtilizador,
+  userIdSchema,
+  userId,
+}
