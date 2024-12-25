@@ -7,6 +7,8 @@ import CursosPage from '../client/screens/cursosPage';
 import SettingsPage from '../client/screens/settingsPage';
 import AdminPanel from '../client/screens/adminPanel';
 import ProfilePage from '../client/screens/profilePage';
+import Curso from '../client/screens/curso';
+import Perguntas from '../client/screens/perguntas';
 
 export const App = () => {
   return (
@@ -20,6 +22,8 @@ export const App = () => {
           <Route path="/settingsPage" element={<SettingsPage />} />
           <Route path="/adminPanel" element={<AdminPanel/>} />
           <Route path="/profilePage" element={<ProfilePage/>} />
+          <Route path="/curso/:id" element={<Curso />} />
+          <Route path="/perguntas/:id" element={<Perguntas />} />
           {/* Outras rotas podem ser adicionadas aqui */}
         </Routes>
         <Footer />

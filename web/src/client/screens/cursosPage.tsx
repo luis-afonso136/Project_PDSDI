@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/navbar";
 import { FaSearch, FaBook } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const CursosPage: React.FC = () => {
   const [filter, setFilter] = useState("all");
@@ -11,6 +12,12 @@ const CursosPage: React.FC = () => {
     level: "",
     skills: [] as string[],
   });
+
+  const navigate = useNavigate();
+
+  const handleCardClick = (title: string) => {
+    navigate(`/curso/${title.toLowerCase()}`);
+  };
 
   const technologies = [
     {
@@ -41,28 +48,11 @@ const CursosPage: React.FC = () => {
       skills: ["ReactJS", "JavaScript"],
     },
     {
-      title: "Python",
-      level: "Iniciante",
-      skills: ["Python"],
-    },
-    { title: "C#", level: "Avançado", skills: ["C#"] },
-    { title: "PHP", level: "Iniciante", skills: ["PHP"] },
-    {
       title: "JavaScript",
       level: "Intermediário",
       skills: ["JavaScript"],
     },
-    {
-      title: "Frontend",
-      level: "Intermediário",
-      skills: ["ReactJS", "JavaScript", "HTML", "CSS", "Tailwind"],
-    },
-    {
-      title: "Backend",
-      level: "Avançado",
-      skills: ["NodeJS", "PHP", "C#", "Python"],
-    },
-    { title: "Swift", level: "Intermediário", skills: ["Swift"] },
+  
   ];
 
   const handleTechnologyClick = (tech: string) => {
@@ -81,26 +71,10 @@ const CursosPage: React.FC = () => {
     switch (skill) {
       case "ReactJS":
         return "https://img.icons8.com/color/20/react-native.png";
-      case "C#":
-        return "https://img.icons8.com/color/20/c-sharp-logo.png";
+      
       case "JavaScript":
         return "https://img.icons8.com/color/20/javascript.png";
-      case "PHP":
-        return "https://img.icons8.com/color/20/php.png";
-      case "NodeJS":
-        return "https://img.icons8.com/color/20/nodejs.png";
-      case "Python":
-        return "https://img.icons8.com/color/20/python.png";
-      case "HTML":
-        return "https://img.icons8.com/color/20/html-5.png";
-      case "CSS":
-        return "https://img.icons8.com/color/20/css3.png";
-      case "Tailwind":
-        return "https://img.icons8.com/color/20/tailwindcss.png";
-      case "Swift":
-        return "https://img.icons8.com/color/20/swift.png";
-      default:
-        return "https://img.icons8.com/ios-filled/20/gray/question-mark.png";
+      
     }
   };
 
@@ -185,38 +159,37 @@ const CursosPage: React.FC = () => {
         </div>
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {filteredCourses.map((course, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-lg p-4 flex flex-col h-full relative hover:scale-105 transition-all cursor-pointer"
-            >
-              <div className="absolute top-4 left-4 text-purple-200 text-7xl opacity-10">
-                <FaBook />
-              </div>
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-bold text-gray-800">
-                  {course.title}
-                </h3>
-              </div>
-              <p className="text-gray-600 mb-4">{course.level}</p>
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {course.skills.map((skill, idx) => (
-                  <span
-                    key={idx}
-                    className="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full flex items-center"
-                  >
-                    <img
-                      src={getSkillIcon(skill)}
-                      alt={skill}
-                      className="mr-1"
-                    />
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+      {filteredCourses.map((course, index) => (
+        <div
+          key={index}
+          className="bg-white rounded-lg shadow-lg p-4 flex flex-col h-full relative hover:scale-105 transition-all cursor-pointer"
+          onClick={() => handleCardClick(course.title)}
+        >
+          <div className="absolute top-4 left-4 text-purple-200 text-7xl opacity-10">
+            <FaBook />
+          </div>
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-lg font-bold text-gray-800">{course.title}</h3>
+          </div>
+          <p className="text-gray-600 mb-4">{course.level}</p>
+          <div className="flex flex-wrap gap-2 mt-auto">
+            {course.skills.map((skill, idx) => (
+              <span
+                key={idx}
+                className="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full flex items-center"
+              >
+                <img
+                  src={getSkillIcon(skill)}
+                  alt={skill}
+                  className="mr-1"
+                />
+                {skill}
+              </span>
+            ))}
+          </div>
         </div>
+      ))}
+    </div>
       </div>
 
       {isModalOpen && (

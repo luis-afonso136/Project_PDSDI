@@ -8,6 +8,8 @@ import SettingsPage from "../client/screens/settingsPage";
 import AdminPanel from "../client/screens/adminPanel";
 import ProfilePage from "../client/screens/profilePage";
 import { PrivateRoutes } from "./privateRoutes"; // Importando o componente
+import Curso from "../client/screens/curso";
+import Perguntas from "../client/screens/perguntas";
 
 export const router = createBrowserRouter([
   {
@@ -77,6 +79,33 @@ export const router = createBrowserRouter([
           <div>
             <ProfilePage />
             <Footer />
+          </div>
+        }
+        notHaveAccessNavigateTo="/login"
+      />
+    ),
+  },
+  {
+    path: "/curso/:id",
+    element: (
+      <PrivateRoutes
+        element={
+          <div>
+            <Curso />
+            <Footer />
+          </div>
+        }
+        notHaveAccessNavigateTo="/login"
+      />
+    ),
+  },
+  {
+    path: "/perguntas/:id",
+    element: (
+      <PrivateRoutes
+        element={
+          <div>
+            <Perguntas />
           </div>
         }
         notHaveAccessNavigateTo="/login"
